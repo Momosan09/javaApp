@@ -16,7 +16,7 @@ public class Window extends JFrame{
   }
 
   public void ponerPanel(JPanel panel){
-    panel.setLayout(null);
+    //panel.setLayout(null);
     this.getContentPane().add(panel);
 
   }

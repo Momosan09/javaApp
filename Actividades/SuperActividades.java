@@ -1,5 +1,6 @@
 package Actividades;
-import javax.swing.JComponent;
+
+
 
 import Recursos.*;
 
@@ -15,14 +16,10 @@ public abstract class SuperActividades extends Window{
         this.setTitle("Super");
         //superWindow.ponerPanel(panel);
         //superWindow.setVisible(true);
-
     }
 
     public void iniciar(){
+    }
 
-    }
-    public void ponerComponente(JComponent component){
-        this.add(component);
-    }
 
 }
