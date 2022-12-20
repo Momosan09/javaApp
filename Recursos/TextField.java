@@ -1,32 +1,44 @@
 package Recursos;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.event.ActionEvent;//para los eventos
-import java.awt.event.ActionListener;//para los eventos
-import java.awt.event.KeyListener;
 
-public class TextField{
+import java.awt.event.KeyEvent;//eventos de teclado
+import java.awt.event.KeyListener;//eventos de teclado
 
-  public TextField(int posX, int posY, int width, int height){
-    JTextField cajaTexto = new JTextField();
-    cajaTexto.setBounds(posX,posY,width,height);
+
+public class TextField extends JTextField implements KeyListener{
+  
+  public TextField(int posX, int posY, int width, int height, JPanel jp){
+    setBounds(posX,posY,width,height);
+    jp.add(this);//se auto agrega al panel pasado como parametro
 
     eventosTeclado();
   }
-  public void eventosTeclado(){/* 
-    KeyListener ae = new KeyListener();
+  
+  private void eventosTeclado(){
+    
 
-    @Override
-    public void keyTyped(KeyEvent ke){
+    
+    this.addKeyListener(this);
+    
+  }
 
-    }
-    @Override
-    public void keyPressed(KeyEvent ke){
+  @Override
+  public void keyTyped(KeyEvent e) {
+    // TODO Auto-generated method stub
+    System.out.println("Helo");
+    
+  }
 
-    }
-    public void keyReleased(KeyEvent ke){
-      
-    }
-    cajaTexto.addKeyListener(ae);
-    */
+  @Override
+  public void keyPressed(KeyEvent e) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+    // TODO Auto-generated method stub
+    
   }
 }

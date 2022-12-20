@@ -7,7 +7,8 @@ public class Window extends JFrame{
   public JPanel panel = new JPanel();
 
   public Window(){
-    setSize(500,500);
+    //setExtendedState(JFrame.MAXIMIZED_BOTH); //pantalla completa
+    setSize(1000,1000);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Untitled");
@@ -16,7 +17,7 @@ public class Window extends JFrame{
   }
 
   public void ponerPanel(JPanel panel){
-    //panel.setLayout(null);
+    panel.setLayout(null);
     this.getContentPane().add(panel);
 
   }

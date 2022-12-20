@@ -1,12 +1,13 @@
 package Recursos;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import java.awt.Font;
 
 public class Label extends JLabel{
-    JLabel etiqueta = new JLabel();
     
-    public Label(String Texto, String ToolTip, int posX, int posY, int widht, int height){
+    public Label(String Texto, String ToolTip, int posX, int posY, int widht, int height, JPanel jp){
         //etiqueta.setOpaque(true);//Vuelve transparente a la etiqueta (Sirve para pintar el Background)
         setText(Texto);
         setToolTipText(ToolTip);
@@ -15,7 +16,8 @@ public class Label extends JLabel{
         setVisible(true);
         //etiqueta.setLabelFor(c);
 
-        //this.add(etiqueta);
+        jp.add(this);//se auto agrega al panel pasado como parametro
+
       }
 
 
