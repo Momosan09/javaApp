@@ -14,11 +14,19 @@ import Recursos.Label;
 import Recursos.TextField;
 
 public class Actividad_1 extends SuperActividades {
-    JPanel jp1 = new JPanel();
+    JPanel jp1 = new JPanel();//jp1 es para los inputs
+    JPanel jp2 = new JPanel();//jp2 es para los outputs
+
+
+    public float medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion;
+    public int cantidadPanos;
+    public String medidaTelaOut;
 
     
     //Button btn1 = new Button("Boton 1", 200, 0, 100, 20);
     
+    /*INPUT */
+
     /*Medida Tela*/
     JLabel lbMedidaTela = new Label("Ingrese medida de la tela", "Medida de la tela en cm", 0, 0, 250, 25, jp1);
     TextField txfMedidaTela = new TextField(250, 0, 150, 25, jp1);
@@ -47,6 +55,9 @@ public class Actividad_1 extends SuperActividades {
     JRadioButton r9 = new Radio("Modelo 9",220,160,100,30,jp1);
 
 
+    /*OUTPUT */
+
+    JLabel medidaOut = new Label("medida = " + medidaTelaOut, "medida de la tela en cm", 0,200,250,25, jp1);
 
     
     public Actividad_1() {
@@ -59,6 +70,7 @@ public class Actividad_1 extends SuperActividades {
         setValues();
 
         ponerPanel(jp1);
+    
         
     }
 
@@ -86,9 +98,9 @@ public class Actividad_1 extends SuperActividades {
         bg.add(r9);
     }
     private void setValues(){
-        txfMedidaTela.getText();
-        txfPrecioUnPano.getText();
-        txfPrecioTela.getText();
+        medidaTela = txfMedidaTela.valor;
+        precioPano = txfPrecioUnPano.valor;
+        precioTela = txfPrecioTela.valor;
 
     }
 
