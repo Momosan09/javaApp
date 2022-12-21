@@ -4,7 +4,11 @@ import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 
+
+import Recursos.Radio;
 import Recursos.Button;
 import Recursos.Label;
 import Recursos.TextField;
@@ -27,6 +31,22 @@ public class Actividad_1 extends SuperActividades {
     JLabel lbPrecioTela = new Label("Precio de la tela", "Precio de la tela", 0, 60, 250,25,jp1);
     TextField txfPrecioTela = new TextField(250, 60, 150, 25, jp1);
 
+    /*Modelo elegido */
+    ButtonGroup bg = new ButtonGroup();
+
+    JRadioButton r1 = new Radio("Modelo 1",10,100,100,30,jp1);
+    JRadioButton r2 = new Radio("Modelo 2",10,130,100,30,jp1);
+    JRadioButton r3 = new Radio("Modelo 3",10,160,100,30,jp1);
+
+    JRadioButton r4 = new Radio("Modelo 4",110,100,100,30,jp1);
+    JRadioButton r5 = new Radio("Modelo 5",110,130,100,30,jp1);
+    JRadioButton r6 = new Radio("Modelo 6",110,160,100,30,jp1);
+
+    JRadioButton r7 = new Radio("Modelo 7",220,100,100,30,jp1);
+    JRadioButton r8 = new Radio("Modelo 8",220,130,100,30,jp1);
+    JRadioButton r9 = new Radio("Modelo 9",220,160,100,30,jp1);
+
+
 
     
     public Actividad_1() {
@@ -44,7 +64,7 @@ public class Actividad_1 extends SuperActividades {
 
     private void ui() {
         ponerEtiqueta();
-        ponerBoton();
+        ponerRadio();
     }
     
     private void ponerEtiqueta(){
@@ -54,14 +74,21 @@ public class Actividad_1 extends SuperActividades {
 
     }
 
-    private void ponerBoton() {
-        //jp1.add(btn1);
-
+    private void ponerRadio() {
+        bg.add(r1);
+        bg.add(r2);
+        bg.add(r3);
+        bg.add(r4);
+        bg.add(r5);
+        bg.add(r6);
+        bg.add(r7);
+        bg.add(r8);
+        bg.add(r9);
     }
     private void setValues(){
-        txfMedidaTela.setText("Medida ingresada");
-        txfPrecioUnPano.setText("Precio Paño Ingresado");
-        txfPrecioTela.setText("Precio Tela ingrsado");
+        txfMedidaTela.getText();
+        txfPrecioUnPano.getText();
+        txfPrecioTela.getText();
 
     }
 
