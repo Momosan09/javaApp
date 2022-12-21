@@ -1,7 +1,5 @@
 package Actividades;
 
-
-
 import Recursos.*;
 
 //import javax.swing.JPanel;
@@ -9,8 +7,10 @@ import Recursos.*;
 
 
 public abstract class SuperActividades extends Window{
-    //Window superWindow = new Window();
+    Window superWindow = new Window();
     //JPanel superPanel = new JPanel();
+
+    public int posX, posY, width, height;
 
     public SuperActividades(){
         this.setTitle("Super");

@@ -14,6 +14,7 @@ public class TextField extends JTextField implements KeyListener{
 
     eventosTeclado();
   }
+  public String text;
   
   private void eventosTeclado(){
     
@@ -23,10 +24,18 @@ public class TextField extends JTextField implements KeyListener{
     
   }
 
+  public void setText(String s){
+    text = s;
+  }
+
+  public String getText(){
+    return text;
+  }
+
   @Override
   public void keyTyped(KeyEvent e) {
     // TODO Auto-generated method stub
-    System.out.println("Helo");
+    System.out.println(getText());
     
   }
 
