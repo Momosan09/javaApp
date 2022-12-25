@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import java.io.*;
+
 import java.awt.event.KeyEvent;//eventos de teclado
 import java.awt.event.KeyListener;//eventos de teclado
 
@@ -19,7 +19,7 @@ public class TextField extends JTextField implements KeyListener {
   public TextField(int posX, int posY, int width, int height, int col, JPanel jp, String textoLabel) {
 
     textoDefault = textoLabel;
-
+    
     setBounds(posX, posY, width, height);
     setColumns(col);
     dispayLabel(posX - posX, posY + 200, width, height, jp, textoLabel);

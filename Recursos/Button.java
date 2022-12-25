@@ -1,7 +1,7 @@
 package Recursos;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;//para los eventos
-import java.awt.event.ActionEvent;//para los eventos
+/* import java.awt.event.ActionListener;//para los eventos
+import java.awt.event.ActionEvent; *///para los eventos
 
 public class Button extends JButton{
 
@@ -11,12 +11,12 @@ public class Button extends JButton{
 
     /*ver como hacer para que los eventos se puedan diferenciar, tipo que pueda hacer distintos metodos*/
 
-    ActionListener click = new ActionListener(){
+    /* ActionListener click = new ActionListener(){
     @Override
       public void actionPerformed(ActionEvent ae){
       System.out.println("Click");
       }
     };
-    this.addActionListener(click);
+    this.addActionListener(click); */
   }
 }

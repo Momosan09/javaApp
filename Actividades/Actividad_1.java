@@ -1,6 +1,8 @@
 package Actividades;
 
 import java.awt.Component;
+import java.awt.event.ActionListener;//para los eventos
+import java.awt.event.ActionEvent;//para los eventos
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +19,8 @@ public class Actividad_1 extends SuperActividades {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
     JPanel jp2 = new JPanel();// jp2 es para los outputs
 
-    public float medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total, cantidadPanos, multiplicadorModelo;
+    public double medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total,
+            cantidadPanos, multiplicadorModelo;
     public String medidaTelaOut, modeloElegido;
 
     // Button btn1 = new Button("Boton 1", 200, 0, 100, 20);
@@ -52,6 +55,10 @@ public class Actividad_1 extends SuperActividades {
     JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
 
     /* OUTPUT */
+    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 300, 300, 25, jp1);
+    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 330, 300, 25, jp1);
+    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 360, 300, 25, jp1);
+    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 390, 300, 25, jp1);
 
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
@@ -60,10 +67,11 @@ public class Actividad_1 extends SuperActividades {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         ui();
-        setValues();
+
+        addEventRadio();
         ponerPanel(jp1);
-        radios();
-        calCular();
+        // checkRadios();
+
     }
 
     private void ui() {
@@ -92,40 +100,99 @@ public class Actividad_1 extends SuperActividades {
         // modeloElegido = bg.getSelection().getActionCommand();
     }
 
-    private void setValues() {
-        // ver como hacer para mostrar los inputs
-        medidaTela = txfMedidaTela.valor;
-        precioPano = txfPrecioUnPano.valor;
-        precioTela = txfPrecioTela.valor;
+    private void checkRadios() {
 
-    }
-
-    private void calCular() {
-        medidaTotalTela = (medidaTela * multiplicadorModelo);
-        precioTotalTela = medidaTotalTela * precioTela;
-        cantidadPanos = (float) (medidaTotalTela / 1.5); //(redondear para arriba la cantidad de paños)
-        precioConfeccion = cantidadPanos * precioPano;
-        Total = precioTotalTela + precioConfeccion;
-        System.out.println(Total);
-    }
-
-    private void radios() {
-
-        // System.out.println(bg.getSelection().getActionCommand());
-
-        System.out.println(r1.isSelected());
-        System.out.println(r2.isSelected());
-        System.out.println(r3.isSelected());
-        System.out.println(r4.isSelected());
-        System.out.println(r5.isSelected());
-        System.out.println(r6.isSelected());
-        System.out.println(r7.isSelected());
-        System.out.println(r8.isSelected());
-        System.out.println(r9.isSelected());
+        if (r1.isSelected()) {
+            multiplicadorModelo = 1;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r2.isSelected()) {
+            multiplicadorModelo = 2;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r3.isSelected()) {
+            multiplicadorModelo = 3;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r4.isSelected()) {
+            multiplicadorModelo = 4;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r5.isSelected()) {
+            multiplicadorModelo = 5;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r6.isSelected()) {
+            multiplicadorModelo = 2.5;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r7.isSelected()) {
+            multiplicadorModelo = 1.5;
+            System.out.println(multiplicadorModelo);
+        }
+        if (r8.isSelected()) {
+            multiplicadorModelo = 1.6;
+            System.out.println(multiplicadorModelo);
+        }
         if (r9.isSelected()) {
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAAa");
+            multiplicadorModelo = 2;
+            System.out.println(multiplicadorModelo);
         }
 
+    }
+
+    public Double truncateNumber(Double value, int cantidadDecimales){
+        value = value * Math.pow(10, cantidadDecimales);
+        value = Math.floor(value);
+        value = value / Math.pow(10,cantidadDecimales);
+        return value;
+    }
+
+    public void calCular() {
+        // multiplicadorModelo=2;
+        medidaTela = Float.parseFloat(txfMedidaTela.getText());
+        precioPano = Float.parseFloat(txfPrecioUnPano.getText());
+        precioTela = Float.parseFloat(txfPrecioTela.getText());
+
+
+        medidaTotalTela = (medidaTela * multiplicadorModelo);
+        precioTotalTela = medidaTotalTela * precioTela;
+        cantidadPanos = (float) (medidaTotalTela / 1.5); // (redondear para arriba la cantidad de paños)
+        precioConfeccion = cantidadPanos * precioPano;
+        Total = precioTotalTela + precioConfeccion;
+        Total = truncateNumber(Total, 2);
+
+        //System.out.println(Total);
 
     }
+
+    public void changeOutputLabel() {
+        outMedidaTotalTela.setText("Medida total de la tela = " + String.valueOf(medidaTotalTela) + "cm");// Convierte a string
+        outprecioTotalTela.setText("Precio total de la tela = $" + String.valueOf(precioTotalTela));// Convierte a string
+        outprecioConfeccion.setText("Precio de la confeccion = $" + String.valueOf(precioConfeccion));
+        outTotal.setText("Precio Total = $" + String.valueOf(Total));// Convierte a string
+    }
+
+
+    public void addEventRadio() {
+
+        ActionListener clickRadio = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                checkRadios();
+                calCular();
+                changeOutputLabel();
+            }
+        };
+        r1.addActionListener(clickRadio);
+        r2.addActionListener(clickRadio);
+        r3.addActionListener(clickRadio);
+        r4.addActionListener(clickRadio);
+        r5.addActionListener(clickRadio);
+        r6.addActionListener(clickRadio);
+        r7.addActionListener(clickRadio);
+        r8.addActionListener(clickRadio);
+        r9.addActionListener(clickRadio);
+    }
+
 }

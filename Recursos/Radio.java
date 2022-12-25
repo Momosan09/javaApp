@@ -3,6 +3,7 @@ package Recursos;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
 
@@ -19,23 +20,13 @@ public class Radio extends JRadioButton {
 
     jp.add(this);
 
-
-
-    ActionListener click = new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent ae) {
-        System.out.println(getText());
-        System.out.println(isSelected());
-      }
-    };
-    this.addActionListener(click);
   }
 
-  public float getMultModelo(){
-    return multModelo;
-  }
   public void setMultModelo(float n){
     multModelo = n;
-
+    
+  }
+  public float getMultModelo(){
+    return multModelo;
   }
 }
