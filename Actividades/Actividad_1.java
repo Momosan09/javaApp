@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 
 import Recursos.Radio;
@@ -16,9 +17,8 @@ public class Actividad_1 extends SuperActividades {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
     JPanel jp2 = new JPanel();// jp2 es para los outputs
 
-    public float medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion;
-    public int cantidadPanos;
-    public String medidaTelaOut;
+    public float medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total, cantidadPanos, multiplicadorModelo;
+    public String medidaTelaOut, modeloElegido;
 
     // Button btn1 = new Button("Boton 1", 200, 0, 100, 20);
 
@@ -39,17 +39,17 @@ public class Actividad_1 extends SuperActividades {
     /* Modelo elegido */
     ButtonGroup bg = new ButtonGroup();
 
-    JRadioButton r1 = new Radio("Modelo 1", 10, 100, 100, 30, jp1);
-    JRadioButton r2 = new Radio("Modelo 2", 10, 130, 100, 30, jp1);
-    JRadioButton r3 = new Radio("Modelo 3", 10, 160, 100, 30, jp1);
+    JRadioButton r1 = new Radio("Modelo 1", 10, 100, 100, 30, jp1, 2);
+    JRadioButton r2 = new Radio("Modelo 2", 10, 130, 100, 30, jp1, 2);
+    JRadioButton r3 = new Radio("Modelo 3", 10, 160, 100, 30, jp1, 2);
 
-    JRadioButton r4 = new Radio("Modelo 4", 110, 100, 100, 30, jp1);
-    JRadioButton r5 = new Radio("Modelo 5", 110, 130, 100, 30, jp1);
-    JRadioButton r6 = new Radio("Modelo 6", 110, 160, 100, 30, jp1);
+    JRadioButton r4 = new Radio("Modelo 4", 110, 100, 100, 30, jp1, 2);
+    JRadioButton r5 = new Radio("Modelo 5", 110, 130, 100, 30, jp1, 2);
+    JRadioButton r6 = new Radio("Modelo 6", 110, 160, 100, 30, jp1, 2);
 
-    JRadioButton r7 = new Radio("Modelo 7", 220, 100, 100, 30, jp1);
-    JRadioButton r8 = new Radio("Modelo 8", 220, 130, 100, 30, jp1);
-    JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1);
+    JRadioButton r7 = new Radio("Modelo 7", 220, 100, 100, 30, jp1, 2);
+    JRadioButton r8 = new Radio("Modelo 8", 220, 130, 100, 30, jp1, 2);
+    JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
 
     /* OUTPUT */
 
@@ -62,13 +62,13 @@ public class Actividad_1 extends SuperActividades {
         ui();
         setValues();
         ponerPanel(jp1);
-
+        radios();
+        calCular();
     }
 
     private void ui() {
         ponerEtiqueta();
         ponerRadio();
-        setValues();
 
     }
 
@@ -89,6 +89,7 @@ public class Actividad_1 extends SuperActividades {
         bg.add(r7);
         bg.add(r8);
         bg.add(r9);
+        // modeloElegido = bg.getSelection().getActionCommand();
     }
 
     private void setValues() {
@@ -99,4 +100,32 @@ public class Actividad_1 extends SuperActividades {
 
     }
 
+    private void calCular() {
+        medidaTotalTela = (medidaTela * multiplicadorModelo);
+        precioTotalTela = medidaTotalTela * precioTela;
+        cantidadPanos = (float) (medidaTotalTela / 1.5); //(redondear para arriba la cantidad de paños)
+        precioConfeccion = cantidadPanos * precioPano;
+        Total = precioTotalTela + precioConfeccion;
+        System.out.println(Total);
+    }
+
+    private void radios() {
+
+        // System.out.println(bg.getSelection().getActionCommand());
+
+        System.out.println(r1.isSelected());
+        System.out.println(r2.isSelected());
+        System.out.println(r3.isSelected());
+        System.out.println(r4.isSelected());
+        System.out.println(r5.isSelected());
+        System.out.println(r6.isSelected());
+        System.out.println(r7.isSelected());
+        System.out.println(r8.isSelected());
+        System.out.println(r9.isSelected());
+        if (r9.isSelected()) {
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAa");
+        }
+
+
+    }
 }

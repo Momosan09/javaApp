@@ -7,19 +7,35 @@ import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
 
 public class Radio extends JRadioButton {
-    public Radio(String text, int posX, int posY, int width, int height,JPanel jp){
-        setBounds(posX,posY,width,height);
-        setVisible(true);
-        setText(text);
 
-        jp.add(this);
+  public float multModelo;
 
-        ActionListener click = new ActionListener(){
-            @Override
-              public void actionPerformed(ActionEvent ae){
-              System.out.println("Click");
-              }
-            };
-            this.addActionListener(click);
-    }
+  public Radio(String text, int posX, int posY, int width, int height, JPanel jp, float pMultModelo) {
+    setBounds(posX, posY, width, height);
+    setVisible(true);
+    setText(text);
+    setActionCommand(text);
+    setMultModelo(pMultModelo);
+
+    jp.add(this);
+
+
+
+    ActionListener click = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent ae) {
+        System.out.println(getText());
+        System.out.println(isSelected());
+      }
+    };
+    this.addActionListener(click);
+  }
+
+  public float getMultModelo(){
+    return multModelo;
+  }
+  public void setMultModelo(float n){
+    multModelo = n;
+
+  }
 }
