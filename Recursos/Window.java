@@ -13,10 +13,10 @@ public class Window extends JFrame{
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Untitled");
-    this.setVisible(false);
+    setVisible(false);
     setUndecorated(false);
     setResizable(false);
-
+    //setExtendedState(JFrame.MAXIMIZED_BOTH);
   }
 
   public void ponerPanel(JPanel panel){

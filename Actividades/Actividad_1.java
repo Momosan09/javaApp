@@ -1,8 +1,12 @@
 package Actividades;
 
+import java.text.*;
 import java.awt.Component;
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
+
+
+import java.util.*;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +32,7 @@ public class Actividad_1 extends SuperActividades {
     /* INPUT */
 
     /* Medida Tela */
-    JLabel lbMedidaTela = new Label("Ingrese medida de la tela", "Medida de la tela en cm", 0, 0, 250, 25, jp1);
+    JLabel lbMedidaTela = new Label("Ingrese medida de la tela", "Medida de la tela en metros", 0, 0, 250, 25, jp1);
     TextField txfMedidaTela = new TextField(250, 0, 150, 25, 5, jp1, "Medida de la tela = ");
 
     /* Precio un solo pano */
@@ -55,10 +59,10 @@ public class Actividad_1 extends SuperActividades {
     JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
 
     /* OUTPUT */
-    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 300, 300, 25, jp1);
-    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 330, 300, 25, jp1);
-    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 360, 300, 25, jp1);
-    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 390, 300, 25, jp1);
+    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 300, 400, 25, jp1);
+    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 330, 400, 25, jp1);
+    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 360, 400, 25, jp1);
+    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 390, 400, 25, jp1);
 
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
@@ -148,6 +152,21 @@ public class Actividad_1 extends SuperActividades {
         return value;
     }
 
+    /*https://docs.oracle.com/javase/tutorial/java/data/numberformat.html */
+/*     public static String customFormat(String pattern, double value ) { // esto hace que los numeros tengan cierto formato 
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        String output = myFormatter.format(value);
+        //System.out.println(value + "  " + pattern + "  " + output);
+        return output;
+     } */
+
+     public String formatNumber(double number){
+        NumberFormat nf = NumberFormat.getInstance(Locale.ITALY);
+        String output = nf.format(number);
+        return output;
+
+     }
+
     public void calCular() {
         // multiplicadorModelo=2;
         medidaTela = Float.parseFloat(txfMedidaTela.getText());
@@ -160,17 +179,18 @@ public class Actividad_1 extends SuperActividades {
         cantidadPanos = (float) (medidaTotalTela / 1.5); // (redondear para arriba la cantidad de paños)
         precioConfeccion = cantidadPanos * precioPano;
         Total = precioTotalTela + precioConfeccion;
-        Total = truncateNumber(Total, 2);
+        //Total = truncateNumber(Total, 2);
+        
 
         //System.out.println(Total);
 
     }
 
     public void changeOutputLabel() {
-        outMedidaTotalTela.setText("Medida total de la tela = " + String.valueOf(medidaTotalTela) + "cm");// Convierte a string
-        outprecioTotalTela.setText("Precio total de la tela = $" + String.valueOf(precioTotalTela));// Convierte a string
-        outprecioConfeccion.setText("Precio de la confeccion = $" + String.valueOf(precioConfeccion));
-        outTotal.setText("Precio Total = $" + String.valueOf(Total));// Convierte a string
+        outMedidaTotalTela.setText("Medida total de la tela = " + String.valueOf(medidaTotalTela) + "Mts");// Convierte a string
+        outprecioTotalTela.setText("Precio total de la tela = $" + formatNumber(precioTotalTela));// Convierte a string
+        outprecioConfeccion.setText("Precio de la confeccion = $" + formatNumber(precioConfeccion) );
+        outTotal.setText("Precio Total = $" + formatNumber(Total));// Convierte a string
     }
 
 
