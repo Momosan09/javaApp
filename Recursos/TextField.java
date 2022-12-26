@@ -14,6 +14,7 @@ public class TextField extends JTextField implements KeyListener {
 
   JLabel display = new JLabel();
 
+
   public String textoDefault;
 
   public TextField(int posX, int posY, int width, int height, int col, JPanel jp, String textoLabel) {
@@ -23,7 +24,8 @@ public class TextField extends JTextField implements KeyListener {
     setBounds(posX, posY, width, height);
     setColumns(col);
     dispayLabel(posX - posX, posY + 200, width, height, jp, textoLabel);
-    jp.add(this);// se auto agrega al panel pasado como parametro
+
+    jp.add(this);// se auto-agrega al panel pasado como parametro
     eventosTeclado();
   }
 
@@ -34,6 +36,7 @@ public class TextField extends JTextField implements KeyListener {
     display.setText(texto);
     jp.add(display);
   }
+
 
   private void eventosTeclado() {
 

@@ -1,6 +1,8 @@
 package Actividades;
 
 import java.text.*;
+import java.awt.Font;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
@@ -64,6 +66,10 @@ public class Actividad_1 extends SuperActividades {
     JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 360, 400, 25, jp1);
     JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 390, 400, 25, jp1);
 
+    /* Errores */
+    JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100, 80, 400, 25, jp1);
+
+
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
         this.setVisible(true);
@@ -85,6 +91,7 @@ public class Actividad_1 extends SuperActividades {
     }
 
     private void ponerEtiqueta() {
+        LberrorDeNoLlenado.setVisible(false);
         lbMedidaTela.setLabelFor(txfMedidaTela);
         lbPrecioPanos.setLabelFor(txfPrecioUnPano);
         lbPrecioTela.setLabelFor(txfPrecioTela);
@@ -102,6 +109,28 @@ public class Actividad_1 extends SuperActividades {
         bg.add(r8);
         bg.add(r9);
         // modeloElegido = bg.getSelection().getActionCommand();
+    }
+
+    public void errores(){
+
+        /*error Dejar un campo vacio */
+        if(txfMedidaTela.getText().isEmpty() || txfPrecioTela.getText().isEmpty() || txfPrecioUnPano.getText().isEmpty()){
+
+            System.out.println("Error, ingrese datos en todos los campos");
+            errorDeNoLlenado(true);
+
+
+        }
+        else{
+            LberrorDeNoLlenado.setVisible(false);
+
+        }
+    }
+    public void errorDeNoLlenado(boolean b){
+        LberrorDeNoLlenado.setVisible(b);
+        LberrorDeNoLlenado.setFont(new Font("LINUX", Font.PLAIN, 12));
+        LberrorDeNoLlenado.setForeground(Color.RED);
+        
     }
 
     private void checkRadios() {
@@ -160,8 +189,8 @@ public class Actividad_1 extends SuperActividades {
         return output;
      } */
 
-     public String formatNumber(double number){
-        NumberFormat nf = NumberFormat.getInstance(Locale.ITALY);
+     public String formatNumber(double number){//le da formato a los numeros
+        NumberFormat nf = NumberFormat.getInstance(Locale.ITALY);//ITALY es el modelo que usamos ###.###,###
         String output = nf.format(number);
         return output;
 
@@ -199,6 +228,7 @@ public class Actividad_1 extends SuperActividades {
         ActionListener clickRadio = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                errores();
                 checkRadios();
                 calCular();
                 changeOutputLabel();
