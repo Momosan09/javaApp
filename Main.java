@@ -1,17 +1,45 @@
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.event.ActionListener;//para los eventos
+import java.awt.event.ActionEvent;//para los eventos
+
 import Actividades.*;
+import Recursos.Window;
+import Recursos.Label;
+
 
 public class Main{
   
+  JButton btnIngresar = new JButton();
+  
   public static void main(String [] args){
+    Window window = new Window();
     JPanel jp = new JPanel();
-    //Window window = new Window();
 
+/*     window.setVisible(true);
+
+    window.setExtendedState(window.getExtendedState() | window.MAXIMIZED_BOTH);
+
+    window.getContentPane().add(jp); */
+    
+
+    Manager mn = new Manager();{
+      //Actividad_1 act = new Actividad_1();
+
+    }
     SuperActividades sup = new SuperActividades() {
-      Actividad_1 act = new Actividad_1();
+      //Actividad_1 act = new Actividad_1();
     };
     
+
+  }
+
+
+
+}
+
   /*
     se necesitan x inputs
       -Modelo elegido el cual contiene un nombre y un valor numerico(multiplicadorDelaTelaElegida)
@@ -30,6 +58,3 @@ public class Main{
 
       ver lo de los botones y eventos en el directorio "cartas"
   */
-
-  }
-}

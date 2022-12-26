@@ -3,18 +3,15 @@ package Actividades;
 import java.text.*;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Component;
+
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
-import java.awt.event.KeyEvent;//eventos de teclado
-import java.awt.event.KeyListener;//eventos de teclado
 import java.awt.print.PrinterException;
 import java.util.*;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 
 import Recursos.Radio;
@@ -82,7 +79,7 @@ public class Actividad_1 extends SuperActividades {
         this.setTitle("Presupuesto 1");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // this.setFocusable(true);
 
         ui();
@@ -271,7 +268,7 @@ public class Actividad_1 extends SuperActividades {
                     imprimir.fill(outTotal);
                     imprimir.print();
                 } catch (PrinterException e) {
-                    // TODO Auto-generated catch block
+
                     e.printStackTrace();
                 }
             }
@@ -282,21 +279,21 @@ public class Actividad_1 extends SuperActividades {
     /*
      * @Override
      * public void keyTyped(KeyEvent e) {
-     * // TODO Auto-generated method stub
+
      * System.out.println("hola");
      * 
      * }
      * 
      * @Override
      * public void keyPressed(KeyEvent e) {
-     * // TODO Auto-generated method stub
+
      * System.out.println("hola");
      * 
      * }
      * 
      * @Override
      * public void keyReleased(KeyEvent e) {
-     * // TODO Auto-generated method stub
+
      * System.out.println("hola");
      * errores();
      * checkRadios();

@@ -11,7 +11,7 @@ public class Window extends JFrame{
 
     setSize(500,500);
     setLocationRelativeTo(null);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    //setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Untitled");
     setVisible(false);
     setUndecorated(false);

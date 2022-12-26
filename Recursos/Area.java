@@ -15,9 +15,11 @@ public class Area extends JTextArea{
 
 
     public Area(){
+
         imprimirArea.setVisible(true);
         imprimirArea.setAlwaysOnTop (true);
         imprimirArea.ponerPanel(panel);
+        
 
         this.setEditable(false);
         this.setBounds(0,0,500,500);
