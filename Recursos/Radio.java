@@ -3,10 +3,6 @@ package Recursos;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-
-import java.awt.event.ActionListener;//para los eventos
-import java.awt.event.ActionEvent;//para los eventos
-
 public class Radio extends JRadioButton {
 
   public float multModelo;
