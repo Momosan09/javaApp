@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
 import java.awt.event.KeyEvent;//eventos de teclado
 import java.awt.event.KeyListener;//eventos de teclado
-
+import java.awt.print.PrinterException;
 import java.util.*;
 
 import javax.swing.JLabel;
@@ -18,11 +18,12 @@ import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 
 import Recursos.Radio;
+import Recursos.Area;
 import Recursos.Button;
 import Recursos.Label;
 import Recursos.TextField;
 
-public class Actividad_1 extends SuperActividades /* implements KeyListener */ {
+public class Actividad_1 extends SuperActividades {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
     JPanel jp2 = new JPanel();// jp2 es para los outputs
 
@@ -74,6 +75,9 @@ public class Actividad_1 extends SuperActividades /* implements KeyListener */ {
     JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100,
             80, 400, 25, jp1);
 
+    /* Imprimir */
+    Button btnImprimir = new Button("Imprimir", 300, 400, 100, 40, jp1);
+
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
         this.setVisible(true);
@@ -85,9 +89,9 @@ public class Actividad_1 extends SuperActividades /* implements KeyListener */ {
 
         // addEventKey();
         addEventRadio();
-
         ponerPanel(jp1);
         // checkRadios();
+        clickImprimir();
 
     }
 
@@ -252,6 +256,27 @@ public class Actividad_1 extends SuperActividades /* implements KeyListener */ {
         r7.addActionListener(clickRadio);
         r8.addActionListener(clickRadio);
         r9.addActionListener(clickRadio);
+    }
+
+    public void clickImprimir() {
+        ActionListener clickPrint = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Area imprimir = new Area();
+                System.out.println("Printing...");
+                try {
+                    imprimir.fill(outMedidaTotalTela);
+                    imprimir.fill(outprecioConfeccion);
+                    imprimir.fill(outprecioConfeccion);
+                    imprimir.fill(outTotal);
+                    imprimir.print();
+                } catch (PrinterException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        };
+        btnImprimir.addActionListener(clickPrint);
     }
 
     /*
