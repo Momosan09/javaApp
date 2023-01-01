@@ -1,14 +1,18 @@
 package Actividades;
 
+import java.awt.Font;
 import java.awt.Color;
 
+
+import java.time.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-
+import javax.swing.text.AttributeSet.ColorAttribute;
 
 //import javafx.*; Ver despues
 //https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm
@@ -20,8 +24,7 @@ import Recursos.Button;
 public class Manager extends SuperActividades{
 
     JPanel jp = new JPanel();
-    JLabel Lbtitle = new JLabel();
-    JButton btnAct = new JButton();
+    JPanel colIzq = new JPanel();
 
     Actividad_1 act = new Actividad_1();
 
@@ -38,26 +41,53 @@ public class Manager extends SuperActividades{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         jp.setBounds(0,0,200,200);
-        ponerPanel(jp);
-        jp.setBorder(loweredetched);
-        //jp.setForeground(Color.green);
+        jp.setBackground(Color.decode("#cecece"));
 
-        addActividad("Presupuesto 1",100,50);
-        //addActividad("Presupuesto 2",100,200);
+        gui();
+        addActividad("Presupuesto 1", "Lorem ipsum sit amet...",0);
+        addActividad("Presupuesto 2", "Lorem ipsum sit amet...",200);
+        ponerPanel(jp);
+
+        //jp.setBorder(loweredetched);
+        //jp.setForeground(Color.green);
 
     }
 
-    public void addActividad(String title, int posX, int posY) {
-        Lbtitle.setText(title);
-        Lbtitle.setBounds(posX, posY, 200, 20);
-        Lbtitle.setVisible(true);
+    public void addActividad(String title, String txt, int y) {
+        Border loweredetched;
+        loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+
+        JPanel actividad = new JPanel();
+        JLabel lbTitle = new JLabel();
+        JLabel lbText = new JLabel();
+        JButton btnAct = new JButton();
+
+
+        int padding = 30;
+        actividad.setBounds(colIzq.getWidth(),y, this.getWidth(),200);
+        actividad.setBorder(loweredetched);
+        //Titulo
+        lbTitle.setText(title);
+        lbTitle.setBounds(padding, padding, 200, 20);
+        lbTitle.setFont(new Font("LINUX", Font.BOLD, 20));
+
+        //Texto
+        lbText.setBounds(lbTitle.getX(), lbTitle.getY() + padding + padding/3 , actividad.getWidth(),20);
+        lbText.setText(txt);
+        lbText.setFont(new Font("LINUX", Font.PLAIN, 16));
+        lbText.setForeground(Color.decode("#7e7e7e"));
+        
 
         btnAct.setText("Ir");
-        btnAct.setBounds(posX+100,posY+50,100,30);
-        jp.add(btnAct);
+        btnAct.setBounds(actividad.getHeight(),actividad.getHeight()-padding-padding/2,100,30);
 
-        jp.add(Lbtitle);
-        jp.add(btnAct);
+
+        //Agregar al panel
+        actividad.add(btnAct);
+        actividad.add(lbTitle);
+        actividad.add(lbText);
+        actividad.add(btnAct);
+        ponerPanel(actividad);
         btnAct.addActionListener(click);
 
         
@@ -76,5 +106,23 @@ public class Manager extends SuperActividades{
         
     };
 
+    public void gui(){
+        LocalTime myClock = LocalTime.now();
+        System.out.println(myClock);
+        JLabel hora = new JLabel();
+
+        colIzq.setVisible(true);
+        colIzq.setBounds(0,0,this.getWidth()/10, this.getHeight());
+        colIzq.setBackground(Color.decode("#d89e9e"));
+
+        hora.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
+        hora.setHorizontalAlignment(SwingConstants.CENTER);
+        hora.setVerticalAlignment(SwingConstants.BOTTOM);
+        hora.setFont(new Font("LINUX", Font.PLAIN, 20));
+        hora.setText("00:00");
+
+        colIzq.add(hora);
+        ponerPanel(colIzq);
+    }
 
 }

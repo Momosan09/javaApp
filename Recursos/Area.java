@@ -4,6 +4,7 @@ import Recursos.Window;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
 import java.time.LocalDate;  // import the LocalDate class
 
 
@@ -20,11 +21,10 @@ public class Area extends JTextArea{
         imprimirArea.setAlwaysOnTop (true);
         imprimirArea.ponerPanel(panel);
         
-
+        
         this.setEditable(false);
         this.setBounds(0,0,500,500);
         this.setVisible(true);
-        
         panel.add(this);
     }
 
