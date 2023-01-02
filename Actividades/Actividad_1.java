@@ -146,38 +146,47 @@ public class Actividad_1 extends SuperActividades {
 
         if (r1.isSelected()) {
             multiplicadorModelo = 1;
+            modeloElegido = "modelo 1";
             System.out.println(multiplicadorModelo);
         }
         if (r2.isSelected()) {
             multiplicadorModelo = 2;
+            modeloElegido = "modelo 2";
             System.out.println(multiplicadorModelo);
         }
         if (r3.isSelected()) {
             multiplicadorModelo = 3;
+            modeloElegido = "modelo 3";
             System.out.println(multiplicadorModelo);
         }
         if (r4.isSelected()) {
             multiplicadorModelo = 4;
+            modeloElegido = "modelo 4";
             System.out.println(multiplicadorModelo);
         }
         if (r5.isSelected()) {
             multiplicadorModelo = 5;
+            modeloElegido = "modelo 5";
             System.out.println(multiplicadorModelo);
         }
         if (r6.isSelected()) {
             multiplicadorModelo = 2.5;
+            modeloElegido = "modelo 6";
             System.out.println(multiplicadorModelo);
         }
         if (r7.isSelected()) {
             multiplicadorModelo = 1.5;
+            modeloElegido = "modelo 7";
             System.out.println(multiplicadorModelo);
         }
         if (r8.isSelected()) {
             multiplicadorModelo = 1.6;
+            modeloElegido = "modelo 8";
             System.out.println(multiplicadorModelo);
         }
         if (r9.isSelected()) {
             multiplicadorModelo = 2;
+            modeloElegido = "modelo 9";
             System.out.println(multiplicadorModelo);
         }
 
@@ -262,10 +271,16 @@ public class Actividad_1 extends SuperActividades {
                 Area imprimir = new Area();
                 System.out.println("Printing...");
                 try {
-                    imprimir.fill(outMedidaTotalTela);
+                    
+/*                     imprimir.fill(outMedidaTotalTela);
                     imprimir.fill(outprecioConfeccion);
                     imprimir.fill(outprecioConfeccion);
-                    imprimir.fill(outTotal);
+                    imprimir.fill(outTotal); */
+                    imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
+                    imprimir.out2.setText("Modelo Elegido:" + String.valueOf(modeloElegido));
+                    imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+                    imprimir.out4.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+                    imprimir.out5.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
                     imprimir.print();
                 } catch (PrinterException e) {
 

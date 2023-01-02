@@ -29,12 +29,13 @@ public class Area extends JTextArea{
     LocalDate date = LocalDate.now();  // Create a date object
 
     //labels
-    JLabel centerText = new JLabel();
-    JLabel out1 = new JLabel();
-    JLabel out2 = new JLabel();
-    JLabel out3 = new JLabel();
+    public JLabel centerText = new JLabel();
+    public JLabel out1 = new JLabel();
+    public JLabel out2 = new JLabel();
+    public JLabel out3 = new JLabel();
+    public JLabel out4 = new JLabel();
+    public JLabel out5 = new JLabel();
     
-    public int padding = 20;
 
     //private static final String IMG_PATH = "../images/image01.png";
 
@@ -50,7 +51,7 @@ public class Area extends JTextArea{
         this.setBounds(0,0,500,500);
         this.setVisible(true);
         gui();
-        panel.add(this);
+        //panel.add(this);
 
     }
 
@@ -62,6 +63,7 @@ public class Area extends JTextArea{
     public void gui(){
         JPanel header = new JPanel();
         JPanel body = new JPanel();
+        final int padding = 20;
 
 
         //cabezal
@@ -80,24 +82,34 @@ public class Area extends JTextArea{
         body.setBackground(Color.decode("#cecece"));
 
         out1.setText("Out1 = n");
-        out1.setBounds(padding,padding,this.getWidth(),padding);
+        out1.setBounds(0,20,20,20);
         out1.setFont(new Font("LINUX", Font.PLAIN, 16));
 
         out2.setText("Out2 = n");
-        out2.setBounds(padding,padding*3,this.getWidth(),padding);
+        out2.setBounds(padding,40,this.getWidth(),padding);
         out2.setFont(new Font("LINUX", Font.PLAIN, 16));
 
         out3.setText("Out3 = n");
-        out3.setBounds(padding,padding*5,this.getWidth(),padding);
+        out3.setBounds(0,60,this.getWidth(),padding);
         out3.setFont(new Font("LINUX", Font.PLAIN, 16));
 
+        out4.setText("Out4 = n");
+        out4.setBounds(0,padding*7,this.getWidth(),padding);
+        out4.setFont(new Font("LINUX", Font.PLAIN, 16));
+
+        out5.setText("Out5 = n");
+        out5.setBounds(0,padding*9,this.getWidth(),padding);
+        out5.setFont(new Font("LINUX", Font.PLAIN, 16));
+
         
-        panel.add(header);
         panel.add(body);
+        panel.add(header);
+        header.add(centerText);
         body.add(out1);
         body.add(out2);
         body.add(out3);
-        header.add(centerText);
+        body.add(out4);
+        body.add(out5);
 
         
     }

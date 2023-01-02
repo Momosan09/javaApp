@@ -12,14 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-import javax.swing.text.AttributeSet.ColorAttribute;
+
 
 //import javafx.*; Ver despues
 //https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
 
-import Recursos.Button;
+
 
 public class Manager extends SuperActividades{
 
@@ -31,8 +31,8 @@ public class Manager extends SuperActividades{
     public Manager() {
         /*BORDES */
         /*https://docs.oracle.com/javase/tutorial/uiswing/components/border.html */
-        Border loweredetched;
-        loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+/*         Border loweredetched;
+        loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED); */
     
         act.setVisible(false);
         

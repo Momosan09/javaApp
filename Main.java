@@ -1,14 +1,12 @@
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.event.ActionListener;//para los eventos
-import java.awt.event.ActionEvent;//para los eventos
+
 
 import Actividades.*;
 import Recursos.Window;
 import Recursos.Area;
-import Recursos.Label;
+
 
 
 public class Main{
