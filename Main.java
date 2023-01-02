@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;//para los eventos
 
 import Actividades.*;
 import Recursos.Window;
+import Recursos.Area;
 import Recursos.Label;
 
 
@@ -18,6 +19,7 @@ public class Main{
     Window window = new Window();
     JPanel jp = new JPanel();
 
+    Area area = new Area();
 /*     window.setVisible(true);
 
     window.setExtendedState(window.getExtendedState() | window.MAXIMIZED_BOTH);

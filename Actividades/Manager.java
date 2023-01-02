@@ -45,7 +45,7 @@ public class Manager extends SuperActividades{
 
         gui();
         addActividad("Presupuesto 1", "Lorem ipsum sit amet...",0);
-        addActividad("Presupuesto 2", "Lorem ipsum sit amet...",200);
+        addActividad("Presupuesto 2", "Lorem ipsum sit amet 2 ...",200);
         ponerPanel(jp);
 
         //jp.setBorder(loweredetched);
