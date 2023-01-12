@@ -272,25 +272,24 @@ public class Actividad_1 extends SuperActividades {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Area imprimir = new Area();
-                System.out.println("Printing...");
-                /*
-                try {
+                System.out.println("Printing..."); 
+                imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
+                imprimir.out2.setText("Modelo Elegido:" + String.valueOf(modeloElegido));
+                imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+                imprimir.out4.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+                imprimir.out5.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+/*                 try {
                     
-                     imprimir.fill(outMedidaTotalTela);
+                    imprimir.fill(outMedidaTotalTela);
                     imprimir.fill(outprecioConfeccion);
                     imprimir.fill(outprecioConfeccion);
                     imprimir.fill(outTotal); 
-                    imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
-                    imprimir.out2.setText("Modelo Elegido:" + String.valueOf(modeloElegido));
-                    imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
-                    imprimir.out4.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
-                    imprimir.out5.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+
                     imprimir.print();
                 } catch (PrinterException e) {
-
                     e.printStackTrace();
-                }
-                    */
+                } */
+                    
             }
         };
         btnImprimir.addActionListener(clickPrint);

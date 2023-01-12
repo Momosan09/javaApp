@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
+import Recursos.DateLabel;
 
 //import javafx.*; Ver despues
 //https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm
@@ -107,22 +108,33 @@ public class Manager extends SuperActividades{
     };
 
     public void gui(){
-        LocalTime myClock = LocalTime.now();
+/*         LocalTime myClock = LocalTime.now();
         System.out.println(myClock);
         JLabel hora = new JLabel();
+        String date;
+
+        date = String.valueOf(myClock); */
 
         colIzq.setVisible(true);
         colIzq.setBounds(0,0,this.getWidth()/10, this.getHeight());
         colIzq.setBackground(Color.decode("#d89e9e"));
-
+/* 
         hora.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
         hora.setHorizontalAlignment(SwingConstants.CENTER);
         hora.setVerticalAlignment(SwingConstants.BOTTOM);
         hora.setFont(new Font("LINUX", Font.PLAIN, 20));
-        hora.setText("00:00");
+        hora.setText(date);
 
-        colIzq.add(hora);
+
+        colIzq.add(hora); */
+        DateLabel dtlb = new DateLabel();
+        dtlb.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
+        dtlb.setHorizontalAlignment(SwingConstants.CENTER);
+        dtlb.setVerticalAlignment(SwingConstants.BOTTOM);
+        dtlb.setFont(new Font("LINUX", Font.PLAIN, 20));
+        
         ponerPanel(colIzq);
+        colIzq.add(dtlb);
     }
 
 }

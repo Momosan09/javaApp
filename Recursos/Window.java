@@ -16,6 +16,7 @@ public class Window extends JFrame{
     setVisible(false);
     setUndecorated(false);
     setResizable(false);
+    
     //setExtendedState(JFrame.MAXIMIZED_BOTH);
   }
 
