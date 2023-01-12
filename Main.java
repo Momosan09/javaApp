@@ -24,11 +24,11 @@ public class Main{
 
     window.getContentPane().add(jp); */
     
-
-    Manager mn = new Manager();{
+    Manager mn = new Manager(); {
       //Actividad_1 act = new Actividad_1();
 
     }
+    
     SuperActividades sup = new SuperActividades() {
       //Actividad_1 act = new Actividad_1();
     };

@@ -59,6 +59,9 @@ public class Actividad_1 extends SuperActividades {
     JRadioButton r8 = new Radio("Modelo 8", 220, 130, 100, 30, jp1, 2);
     JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
 
+    /*Texto adicional*/
+    //TextField txfTextoAdicional  = new TextField(200,200,150,25,5, jp1, "Texto adicional");
+
     /* OUTPUT */
     JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 300, 400,
             25, jp1);
@@ -270,12 +273,13 @@ public class Actividad_1 extends SuperActividades {
             public void actionPerformed(ActionEvent ae) {
                 Area imprimir = new Area();
                 System.out.println("Printing...");
+                /*
                 try {
                     
-/*                     imprimir.fill(outMedidaTotalTela);
+                     imprimir.fill(outMedidaTotalTela);
                     imprimir.fill(outprecioConfeccion);
                     imprimir.fill(outprecioConfeccion);
-                    imprimir.fill(outTotal); */
+                    imprimir.fill(outTotal); 
                     imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
                     imprimir.out2.setText("Modelo Elegido:" + String.valueOf(modeloElegido));
                     imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
@@ -286,6 +290,7 @@ public class Actividad_1 extends SuperActividades {
 
                     e.printStackTrace();
                 }
+                    */
             }
         };
         btnImprimir.addActionListener(clickPrint);

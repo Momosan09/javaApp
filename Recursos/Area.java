@@ -18,9 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.io.File; */
 
-
 import java.time.LocalDate;  // import the LocalDate class
-
 
 public class Area extends JTextArea{
 
@@ -28,13 +26,14 @@ public class Area extends JTextArea{
     JPanel panel = new JPanel();
     LocalDate date = LocalDate.now();  // Create a date object
 
-    //labels
-    public JLabel centerText = new JLabel();
-    public JLabel out1 = new JLabel();
-    public JLabel out2 = new JLabel();
-    public JLabel out3 = new JLabel();
-    public JLabel out4 = new JLabel();
-    public JLabel out5 = new JLabel();
+    //labels 
+    /*Escribo lo que poso:
+     * Justo aca abajo del comentario que dice "labels" estaban las JLabels out1, out2, ..., etc (que ahora estan abajo dentro del metodo "gui").
+     * La unica diferencia es que ahora las labels no tienen el atributo "public", a diferencia de como estaban declaradas fuera de cualquier metodo y ahora anda.
+     * el problema que tenia o lo que no andaba era que no se ponian en la posicion que le seteaba con el metodo "gui" y al declararlas dentro de este metodo y no publicas ahora funciona como esperaba
+     * no entiendo porque anda y espero mas adelante entederlo
+     * ¿Por que razon si las declare en la clase pero no dentro de un metodo no me hacia caso y si las declaro dentro del metodo si?
+     */
     
 
     //private static final String IMG_PATH = "../images/image01.png";
@@ -43,7 +42,7 @@ public class Area extends JTextArea{
     public Area(){
         
         imprimirArea.setVisible(true);
-        imprimirArea.setAlwaysOnTop (true);
+        imprimirArea.setAlwaysOnTop(false);
         imprimirArea.ponerPanel(panel);
         
         
@@ -52,23 +51,29 @@ public class Area extends JTextArea{
         this.setVisible(true);
         gui();
         //panel.add(this);
-
     }
 
     public void fill(JComponent c){
         this.add(c);
-
     }
 
     public void gui(){
         JPanel header = new JPanel();
         JPanel body = new JPanel();
-        final int padding = 20;
 
+        JLabel centerText = new JLabel();
+        JLabel out1 = new JLabel();
+        JLabel out2 = new JLabel();
+        JLabel out3 = new JLabel();
+        JLabel out4 = new JLabel();
+        JLabel out5 = new JLabel();
+        int padding = 20;
 
         //cabezal
         header.setBounds(0,0,this.getWidth(),this.getHeight()/4);
         header.setBackground(Color.decode("#c66d6d"));
+        panel.add(header);
+
         //texto dentro del cabezal
         centerText.setText("Lorem Ipsum dolor");
         centerText.setBounds(0, header.getHeight()-40, header.getWidth(), 30);
@@ -76,40 +81,44 @@ public class Area extends JTextArea{
         centerText.setVerticalAlignment(SwingConstants.BOTTOM);
         centerText.setFont(new Font("LINUX", Font.PLAIN, 20));
         centerText.setForeground(Color.decode("#e3e3e3"));
+        header.add(centerText);
+
 
         //Cuerpo
-        body.setBounds(panel.getX(),panel.getY()+header.getHeight(),this.getWidth(),this.getHeight()/2);
+        body.setBounds(panel.getX(),125,this.getWidth(),this.getHeight()/2);
         body.setBackground(Color.decode("#cecece"));
+        panel.add(body);
+
 
         out1.setText("Out1 = n");
-        out1.setBounds(0,20,20,20);
-        out1.setFont(new Font("LINUX", Font.PLAIN, 16));
+        out1.setBounds(0,20,100,20);
+        //out1.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(out1);
+
 
         out2.setText("Out2 = n");
-        out2.setBounds(padding,40,this.getWidth(),padding);
-        out2.setFont(new Font("LINUX", Font.PLAIN, 16));
+        out2.setBounds(0,40,100,20);
+        //out2.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(out2);
 
         out3.setText("Out3 = n");
-        out3.setBounds(0,60,this.getWidth(),padding);
-        out3.setFont(new Font("LINUX", Font.PLAIN, 16));
+        out3.setBounds(0,60,100,20);
+        //out3.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(out3);
+
 
         out4.setText("Out4 = n");
-        out4.setBounds(0,padding*7,this.getWidth(),padding);
-        out4.setFont(new Font("LINUX", Font.PLAIN, 16));
+        out4.setBounds(0,80,100,20);
+        //out4.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(out4);
+
 
         out5.setText("Out5 = n");
-        out5.setBounds(0,padding*9,this.getWidth(),padding);
-        out5.setFont(new Font("LINUX", Font.PLAIN, 16));
+        out5.setBounds(0,100,100,20);
+        //out5.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(out5);
 
         
-        panel.add(body);
-        panel.add(header);
-        header.add(centerText);
-        body.add(out1);
-        body.add(out2);
-        body.add(out3);
-        body.add(out4);
-        body.add(out5);
 
         
     }
