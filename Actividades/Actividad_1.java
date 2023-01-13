@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 import Recursos.Radio;
 import Recursos.Area;
@@ -22,7 +23,8 @@ import Recursos.TextField;
 
 public class Actividad_1 extends SuperActividades {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
-    JPanel jp2 = new JPanel();// jp2 es para los outputs
+    //JPanel radiosPanel = new JPanel();
+
 
     public double medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total,
             cantidadPanos, multiplicadorModelo;
@@ -34,15 +36,15 @@ public class Actividad_1 extends SuperActividades {
 
     /* Medida Tela */
     JLabel lbMedidaTela = new Label("Ingrese medida de la tela", "Medida de la tela en metros", 0, 0, 250, 25, jp1);
-    TextField txfMedidaTela = new TextField(250, 0, 150, 25, 5, jp1, "Medida de la tela = ");
+    TextField txfMedidaTela = new TextField(250, 0, 150, 25, 5, jp1, "");
 
     /* Precio un solo pano */
     JLabel lbPrecioPanos = new Label("Precio de un paño", "Precio por unidad de paño", 0, 35, 250, 25, jp1);
-    TextField txfPrecioUnPano = new TextField(250, 35, 150, 25, 5, jp1, "Precio de un paño = ");
+    TextField txfPrecioUnPano = new TextField(250, 35, 150, 25, 5, jp1, "");
 
     /* Precio Tela */
     JLabel lbPrecioTela = new Label("Precio de la tela", "Precio de la tela", 0, 70, 250, 25, jp1);
-    TextField txfPrecioTela = new TextField(250, 70, 150, 25, 5, jp1, "Precio de la tela = ");
+    TextField txfPrecioTela = new TextField(250, 70, 150, 25, 5, jp1, "");
 
     /* Modelo elegido */
     ButtonGroup bg = new ButtonGroup();
@@ -60,16 +62,17 @@ public class Actividad_1 extends SuperActividades {
     JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
 
     /*Texto adicional*/
-    //TextField txfTextoAdicional  = new TextField(200,200,150,25,5, jp1, "Texto adicional");
+    JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20,200,250,20,jp1);
+    JTextArea txtA = new JTextArea();
 
     /* OUTPUT */
-    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 300, 400,
+    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 320, 400,
             25, jp1);
-    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 330, 400, 25,
+    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 350, 400, 25,
             jp1);
-    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 360, 400, 25,
+    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 380, 400, 25,
             jp1);
-    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 390, 400, 25, jp1);
+    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 410, 400, 25, jp1);
 
     /* Errores */
     JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100,
@@ -98,7 +101,19 @@ public class Actividad_1 extends SuperActividades {
     private void ui() {
         ponerEtiqueta();
         ponerRadio();
+        ponerTextArea();
 
+    }
+
+    private void ponerTextArea(){
+        int padding = 20;
+        txtALabel.setFont(new Font("LINUX", Font.CENTER_BASELINE, 16));
+        txtA.setBounds(padding,220,this.getWidth()-padding*3,100);
+        txtA.setLineWrap(true);
+        txtA.setWrapStyleWord(true);
+        txtA.setFont(new Font("LINUX", Font.PLAIN, 16));
+        txtA.setVisible(true);
+        jp1.add(txtA);
     }
 
     private void ponerEtiqueta() {
@@ -110,6 +125,7 @@ public class Actividad_1 extends SuperActividades {
     }
 
     private void ponerRadio() {
+
         bg.add(r1);
         bg.add(r2);
         bg.add(r3);
@@ -278,17 +294,18 @@ public class Actividad_1 extends SuperActividades {
                 imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
                 imprimir.out4.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
                 imprimir.out5.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
-/*                 try {
+                imprimir.anotaciones.setText(txtA.getText());
+                 try {
                     
-                    imprimir.fill(outMedidaTotalTela);
+                    /*imprimir.fill(outMedidaTotalTela);
                     imprimir.fill(outprecioConfeccion);
                     imprimir.fill(outprecioConfeccion);
-                    imprimir.fill(outTotal); 
+                    imprimir.fill(outTotal);*/
 
                     imprimir.print();
                 } catch (PrinterException e) {
                     e.printStackTrace();
-                } */
+                } 
                     
             }
         };

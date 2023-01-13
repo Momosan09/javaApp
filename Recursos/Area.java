@@ -33,6 +33,7 @@ public class Area extends JTextArea{
     public JLabel out3 = new JLabel();
     public JLabel out4 = new JLabel();
     public JLabel out5 = new JLabel();
+    public JTextArea anotaciones = new JTextArea();
 
     /*Escribo lo que poso:
      * Justo aca abajo del comentario que dice "labels" estaban las JLabels out1, out2, ..., etc (que ahora estan abajo dentro del metodo "gui").
@@ -67,6 +68,7 @@ public class Area extends JTextArea{
     public void gui(){
         JPanel header = new JPanel();
         JPanel body = new JPanel();
+        DateLabel day = new DateLabel("date");
         int padding = 25;
 
         header.setBounds(0,0,this.getWidth(),this.getHeight()/4);
@@ -74,11 +76,14 @@ public class Area extends JTextArea{
         header.setLayout(null);
         panel.add(header);
 
-        centerText.setText("Helo");
+        centerText.setText("Lorem Ipsum");
         centerText.setBounds(0, header.getHeight()-40, header.getWidth(), 30);
         centerText.setFont(new Font("LINUX", Font.PLAIN, 20));
         centerText.setHorizontalAlignment(SwingConstants.CENTER);
         centerText.setForeground(Color.decode("#e3e3e3"));
+
+        day.setBounds(padding,padding,200,20);
+        header.add(day);
         header.add(centerText);
 
         body.setBounds(panel.getX(),125,this.getWidth(),this.getHeight()/2);
@@ -110,6 +115,12 @@ public class Area extends JTextArea{
         out5.setBounds(5,padding*5,this.getWidth(),padding);
         out5.setFont(new Font("LINUX", Font.PLAIN, 16));
         body.add(out5);
+ 
+        anotaciones.setBounds(5,padding*7,this.getWidth()-25,70);
+        anotaciones.setLineWrap(true);
+        anotaciones.setWrapStyleWord(true);
+        anotaciones.setFont(new Font("LINUX", Font.PLAIN, 16));
+        body.add(anotaciones);
 
 
         //cabezal

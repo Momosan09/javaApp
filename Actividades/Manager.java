@@ -127,7 +127,7 @@ public class Manager extends SuperActividades{
 
 
         colIzq.add(hora); */
-        DateLabel dtlb = new DateLabel();
+        DateLabel dtlb = new DateLabel("hMS");
         dtlb.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
         dtlb.setHorizontalAlignment(SwingConstants.CENTER);
         dtlb.setVerticalAlignment(SwingConstants.BOTTOM);

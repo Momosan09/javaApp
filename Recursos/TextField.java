@@ -39,7 +39,7 @@ public class TextField extends JTextField implements KeyListener {
   private void dispayLabel(int posX, int posY, int width, int height, JPanel jp, String texto) {
     display.setBounds(posX, posY, width, height);
     display.setText(texto);
-    jp.add(display);
+    //jp.add(display);
   }
 
   private void eventosTeclado() {
