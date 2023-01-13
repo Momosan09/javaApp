@@ -92,7 +92,7 @@ public class TextField extends JTextField implements KeyListener {
     // System.out.println(valor);
 
     display.setText(textoDefault + getText());
-    errorTipoDeDatos(this.getText());
+    //errorTipoDeDatos(this.getText());
 
   }
 }

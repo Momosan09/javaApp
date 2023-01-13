@@ -3,8 +3,6 @@ package Actividades;
 import java.awt.Font;
 import java.awt.Color;
 
-
-import java.time.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;

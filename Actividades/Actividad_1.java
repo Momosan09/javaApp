@@ -6,6 +6,8 @@ import java.awt.Color;
 
 import java.awt.event.ActionListener;//para los eventos
 import java.awt.event.ActionEvent;//para los eventos
+import java.awt.event.KeyEvent;//eventos de teclado
+import java.awt.event.KeyListener;//eventos de teclado
 import java.awt.print.PrinterException;
 import java.util.*;
 
@@ -21,10 +23,9 @@ import Recursos.Button;
 import Recursos.Label;
 import Recursos.TextField;
 
-public class Actividad_1 extends SuperActividades {
+public class Actividad_1 extends SuperActividades implements KeyListener {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
-    //JPanel radiosPanel = new JPanel();
-
+    // JPanel radiosPanel = new JPanel();
 
     public double medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total,
             cantidadPanos, multiplicadorModelo;
@@ -49,20 +50,20 @@ public class Actividad_1 extends SuperActividades {
     /* Modelo elegido */
     ButtonGroup bg = new ButtonGroup();
 
-    JRadioButton r1 = new Radio("Modelo 1", 10, 100, 100, 30, jp1, 2);
-    JRadioButton r2 = new Radio("Modelo 2", 10, 130, 100, 30, jp1, 2);
-    JRadioButton r3 = new Radio("Modelo 3", 10, 160, 100, 30, jp1, 2);
+    JRadioButton r1 = new Radio("Modelo 1", 10, 110, 100, 30, jp1, 2);
+    JRadioButton r2 = new Radio("Modelo 2", 10, 140, 100, 30, jp1, 2);
+    JRadioButton r3 = new Radio("Modelo 3", 10, 170, 100, 30, jp1, 2);
 
-    JRadioButton r4 = new Radio("Modelo 4", 110, 100, 100, 30, jp1, 2);
-    JRadioButton r5 = new Radio("Modelo 5", 110, 130, 100, 30, jp1, 2);
-    JRadioButton r6 = new Radio("Modelo 6", 110, 160, 100, 30, jp1, 2);
+    JRadioButton r4 = new Radio("Modelo 4", 110, 110, 100, 30, jp1, 2);
+    JRadioButton r5 = new Radio("Modelo 5", 110, 140, 100, 30, jp1, 2);
+    JRadioButton r6 = new Radio("Modelo 6", 110, 170, 100, 30, jp1, 2);
 
-    JRadioButton r7 = new Radio("Modelo 7", 220, 100, 100, 30, jp1, 2);
-    JRadioButton r8 = new Radio("Modelo 8", 220, 130, 100, 30, jp1, 2);
-    JRadioButton r9 = new Radio("Modelo 9", 220, 160, 100, 30, jp1, 2);
+    JRadioButton r7 = new Radio("Modelo 7", 220, 110, 100, 30, jp1, 2);
+    JRadioButton r8 = new Radio("Modelo 8", 220, 140, 100, 30, jp1, 2);
+    JRadioButton r9 = new Radio("Modelo 9", 220, 170, 100, 30, jp1, 2);
 
-    /*Texto adicional*/
-    JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20,200,250,20,jp1);
+    /* Texto adicional */
+    JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20, 200, 250, 20, jp1);
     JTextArea txtA = new JTextArea();
 
     /* OUTPUT */
@@ -76,44 +77,44 @@ public class Actividad_1 extends SuperActividades {
 
     /* Errores */
     JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100,
-            80, 400, 25, jp1);
+            90, 400, 25, jp1);
 
     /* Imprimir */
     Button btnImprimir = new Button("Imprimir", 380, 400, 100, 40, jp1);
-    //Check Error
+    // Check Error
     public boolean checkError;
 
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // this.setFocusable(true);
 
-
         ui();
+        addEventKey();
 
         // addEventKey();
         addEventRadio();
         ponerPanel(jp1);
         // checkRadios();
 
-
         clickImprimir();
 
     }
 
     private void ui() {
+        btnImprimir.setEnabled(false);
         ponerEtiqueta();
         ponerRadio();
         ponerTextArea();
 
     }
 
-    private void ponerTextArea(){
+    private void ponerTextArea() {
         int padding = 20;
         txtALabel.setFont(new Font("LINUX", Font.CENTER_BASELINE, 16));
-        txtA.setBounds(padding,220,this.getWidth()-padding*3,100);
+        txtA.setBounds(padding, 220, this.getWidth() - padding * 3, 100);
         txtA.setLineWrap(true);
         txtA.setWrapStyleWord(true);
         txtA.setFont(new Font("LINUX", Font.PLAIN, 16));
@@ -158,6 +159,11 @@ public class Actividad_1 extends SuperActividades {
             checkError = false;
 
         }
+        if (checkError) {
+            btnImprimir.setEnabled(false);
+        } else {
+            btnImprimir.setEnabled(true);
+        }
     }
 
     public void errorDeNoLlenado(boolean b) {
@@ -166,6 +172,19 @@ public class Actividad_1 extends SuperActividades {
         LberrorDeNoLlenado.setForeground(Color.RED);
 
     }
+
+/*     public void errorTipoDeDatos(TextField tx) {
+        try {
+            btnImprimir.setEnabled(true);
+            Float.parseFloat(tx.getText());
+            System.out.println("A number");
+        } catch (NumberFormatException e) {
+            // Not an integer
+            btnImprimir.setEnabled(false);
+            System.out.println("Not a number");
+
+        }
+    } */
 
     private void checkRadios() {
 
@@ -295,63 +314,60 @@ public class Actividad_1 extends SuperActividades {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Area imprimir = new Area();
-                System.out.println("Printing..."); 
+                System.out.println("Printing...");
                 imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
                 imprimir.out2.setText("Modelo Elegido: " + String.valueOf(modeloElegido));
                 imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
                 imprimir.out4.setText("Precio de la Confeccion = $" + formatNumber(precioConfeccion));
                 imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
-                 try {
-                    
-                    /*imprimir.fill(outMedidaTotalTela);
-                    imprimir.fill(outprecioConfeccion);
-                    imprimir.fill(outprecioConfeccion);
-                    imprimir.fill(outTotal);*/
+                try {
+
+                    /*
+                     * imprimir.fill(outMedidaTotalTela);
+                     * imprimir.fill(outprecioConfeccion);
+                     * imprimir.fill(outprecioConfeccion);
+                     * imprimir.fill(outTotal);
+                     */
 
                     imprimir.print();
                 } catch (PrinterException e) {
                     e.printStackTrace();
-                } 
-                    
+                }
+
             }
         };
         btnImprimir.addActionListener(clickPrint);
     }
 
-    /*
-     * @Override
-     * public void keyTyped(KeyEvent e) {
+    @Override
+    public void keyTyped(KeyEvent e) {
 
-     * System.out.println("hola");
-     * 
-     * }
-     * 
-     * @Override
-     * public void keyPressed(KeyEvent e) {
 
-     * System.out.println("hola");
-     * 
-     * }
-     * 
-     * @Override
-     * public void keyReleased(KeyEvent e) {
+    }
 
-     * System.out.println("hola");
-     * errores();
-     * checkRadios();
-     * calCular();
-     * changeOutputLabel();
-     * 
-     * }
-     */
+    @Override
+    public void keyPressed(KeyEvent e) {
 
-    /*
-     * public void addEventKey(){
-     * addKeyListener(txfPrecioTela);
-     * addKeyListener(txfPrecioUnPano);
-     * 
-     * }
-     */
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+        errores();
+        checkRadios();
+        calCular();
+        changeOutputLabel();
+        //errorTipoDeDatos(txfMedidaTela);
+
+    }
+
+    public void addEventKey() {
+        txfMedidaTela.addKeyListener(this);
+        txfPrecioUnPano.addKeyListener(this);
+        txfPrecioTela.addKeyListener(this);
+
+    }
 
 }
