@@ -62,32 +62,26 @@ public class TextField extends JTextField implements KeyListener {
     try {
       LbErrorTipoDato.setVisible(false);
       Float.parseFloat(myString);
-      System.out.println("A number");
     } catch (NumberFormatException e) {
       // Not an integer
       LbErrorTipoDato.setVisible(true);
-      System.out.println("Not a number");
-
     }
   }
 
   @Override
   public void keyTyped(KeyEvent e) {
-    // TODO Auto-generated method stub
     // System.out.println(getText());
 
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
-    // TODO Auto-generated method stub
     // System.out.println(getText());
 
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-    // TODO Auto-generated method stub
     // valor = Float.parseFloat(getText());
     // System.out.println(valor);
 

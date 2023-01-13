@@ -25,7 +25,7 @@ public class Manager extends SuperActividades{
     JPanel jp = new JPanel();
     JPanel colIzq = new JPanel();
 
-    Actividad_1 act = new Actividad_1();
+    Actividad_1 act1 = new Actividad_1();
 
     public Manager() {
         /*BORDES */
@@ -33,7 +33,7 @@ public class Manager extends SuperActividades{
 /*         Border loweredetched;
         loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED); */
     
-        act.setVisible(false);
+        act1.setVisible(false);
         
         setVisible(true);
         setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
@@ -43,8 +43,9 @@ public class Manager extends SuperActividades{
         jp.setBackground(Color.decode("#cecece"));
 
         gui();
-        addActividad("Presupuesto 1", "Lorem ipsum sit amet...",0);
-        addActividad("Presupuesto 2", "Lorem ipsum sit amet 2 ...",200);
+        addActividad("Presupuesto 1", "Lorem ipsum sit amet 1 ...",0);
+/*         addActividad("Presupuesto 2", "Lorem ipsum sit amet 2 ...",200);
+        addActividad("Presupuesto 3", "Lorem ipsum sit amet 3 ...",400); */
         ponerPanel(jp);
 
         //jp.setBorder(loweredetched);
@@ -100,7 +101,7 @@ public class Manager extends SuperActividades{
         @Override
           public void actionPerformed(ActionEvent ae){
           System.out.println("Click");
-          changeStatus(true, act);
+          changeStatus(true, act1);
         }
         
     };

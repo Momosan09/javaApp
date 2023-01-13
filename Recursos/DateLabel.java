@@ -1,7 +1,6 @@
 package Recursos;
 
 import javax.swing.JLabel;
-import java.time.LocalTime;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -16,8 +15,8 @@ public class DateLabel extends JLabel implements ActionListener{
     public DateLabel(String format){
 
         switch(format){
-            case "hM" : sdf =  new SimpleDateFormat("hh:mm");break;
-            case "hMS" : sdf =  new SimpleDateFormat("hh:mm:ss");break;
+            case "hM" : sdf =  new SimpleDateFormat("HH:MM");break; //Escrito en mayusculas formato de 24hs, esctrio en minusculas formato de 12hs
+            case "hMS" : sdf =  new SimpleDateFormat("HH:MM:ss");break;
             case "date" : sdf =  new SimpleDateFormat("DD/MM/YYYY");break;
             default : this.setText("hM - hMS - date");break;
         }

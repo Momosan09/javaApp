@@ -1,7 +1,5 @@
 package Recursos;
 
-import Recursos.Window;
-
 import java.awt.Font;
 import java.awt.Color;
 
