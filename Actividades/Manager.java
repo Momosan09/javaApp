@@ -107,6 +107,9 @@ public class Manager extends SuperActividades{
     };
 
     public void gui(){
+        Border loweredetched, loweredbevel;
+        loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+        loweredbevel = BorderFactory.createLoweredBevelBorder();
 /*         LocalTime myClock = LocalTime.now();
         System.out.println(myClock);
         JLabel hora = new JLabel();
@@ -117,6 +120,24 @@ public class Manager extends SuperActividades{
         colIzq.setVisible(true);
         colIzq.setBounds(0,0,this.getWidth()/10, this.getHeight());
         colIzq.setBackground(Color.decode("#d89e9e"));
+
+        JPanel nombreAbajo = new JPanel();
+        nombreAbajo.setVisible(true);
+        nombreAbajo.setBounds(0,this.getHeight()-(this.getHeight()/10),colIzq.getWidth(),100);
+        nombreAbajo.setBackground(Color.decode("#bc5454"));
+        nombreAbajo.setBorder(loweredbevel);
+        colIzq.add(nombreAbajo);
+
+        JLabel nombreAbajoLabel = new JLabel();
+        nombreAbajoLabel.setText("R O T A P O L");
+        nombreAbajoLabel.setForeground(Color.decode("#e3e3e3"));
+        nombreAbajoLabel.setFont(new Font("LINUX", Font.BOLD, 20));
+        nombreAbajoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        nombreAbajoLabel.setVerticalAlignment(SwingConstants.CENTER);
+        nombreAbajoLabel.setBounds(0,0,nombreAbajo.getWidth(),0);
+        nombreAbajo.add(nombreAbajoLabel);
+
+
 /* 
         hora.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
         hora.setHorizontalAlignment(SwingConstants.CENTER);
@@ -130,7 +151,8 @@ public class Manager extends SuperActividades{
         dtlb.setBounds(colIzq.getX(), colIzq.getY(),colIzq.getWidth(),40);
         dtlb.setHorizontalAlignment(SwingConstants.CENTER);
         dtlb.setVerticalAlignment(SwingConstants.BOTTOM);
-        dtlb.setFont(new Font("LINUX", Font.PLAIN, 20));
+        dtlb.setFont(new Font("LINUX", Font.PLAIN, 26));
+        dtlb.setForeground(Color.decode("#000"));
         
         ponerPanel(colIzq);
         colIzq.add(dtlb);
