@@ -15,8 +15,9 @@ public class DateLabel extends JLabel implements ActionListener{
     public DateLabel(String format){
 
         switch(format){
-            case "hM" : sdf =  new SimpleDateFormat("HH:MM");break; //Escrito en mayusculas formato de 24hs, esctrio en minusculas formato de 12hs
-            case "hMS" : sdf =  new SimpleDateFormat("HH:MM:ss");break;
+            /*La hora escrita en mayuscula es el formato de 24 horas y en minuscula el de 12 horas, con los minutos y segundos funciona de manera extraña */
+            case "hM" : sdf =  new SimpleDateFormat("HH:mm");break;
+            case "hMS" : sdf =  new SimpleDateFormat("HH:mm:ss");break;
             case "date" : sdf =  new SimpleDateFormat("DD/MM/YYYY");break;
             default : this.setText("hM - hMS - date");break;
         }
