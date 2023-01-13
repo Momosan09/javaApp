@@ -1,4 +1,5 @@
 package Recursos;
+
 import Recursos.Window;
 
 import java.awt.Font;
@@ -18,173 +19,153 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.io.File; */
 
-import java.time.LocalDate;  // import the LocalDate class
+import java.time.LocalDate; // import the LocalDate class
 
-public class Area extends JTextArea{
+public class Area extends JTextArea {
 
     Window imprimirArea = new Window();
     JPanel panel = new JPanel();
-    LocalDate date = LocalDate.now();  // Create a date object
+    LocalDate date = LocalDate.now(); // Create a date object
 
-    //labels 
+    // labels
     public JLabel centerText = new JLabel();
+    public JLabel reciclame = new JLabel();
     public JLabel out1 = new JLabel();
     public JLabel out2 = new JLabel();
     public JLabel out3 = new JLabel();
     public JLabel out4 = new JLabel();
     public JLabel out5 = new JLabel();
     public JTextArea anotaciones = new JTextArea();
+    public JLabel nameInFooter = new JLabel();
+    public JLabel direccion = new JLabel();
+    // private static final String IMG_PATH = "../images/image01.png";
 
-    /*Escribo lo que poso:
-     * Justo aca abajo del comentario que dice "labels" estaban las JLabels out1, out2, ..., etc (que ahora estan abajo dentro del metodo "gui").
-     * La unica diferencia es que ahora las labels no tienen el atributo "public", a diferencia de como estaban declaradas fuera de cualquier metodo y ahora anda.
-     * el problema que tenia o lo que no andaba era que no se ponian en la posicion que le seteaba con el metodo "gui" y al declararlas dentro de este metodo y no publicas ahora funciona como esperaba
-     * no entiendo porque anda y espero mas adelante entederlo
-     * ¿Por que razon si las declare en la clase pero no dentro de un metodo no me hacia caso y si las declaro dentro del metodo si?
-     */
-    
+    public Area() {
 
-    //private static final String IMG_PATH = "../images/image01.png";
-
-
-    public Area(){
-        
         imprimirArea.setVisible(true);
         imprimirArea.setAlwaysOnTop(false);
         imprimirArea.ponerPanel(panel);
-        
-        
-        //this.setEditable(false);
-        this.setBounds(0,0,500,500);
+
+        // this.setEditable(false);
+        this.setBounds(0, 0, 500, 500);
         this.setVisible(true);
         gui();
-        //panel.add(this);
+        // panel.add(this);
     }
 
-    public void fill(JComponent c){
+    public void fill(JComponent c) {
         this.add(c);
     }
 
-    public void gui(){
+    public void gui() {
         JPanel header = new JPanel();
         JPanel body = new JPanel();
+        JPanel footer = new JPanel();
         DateLabel day = new DateLabel("date");
+        DateLabel hour = new DateLabel("hMS");
         int padding = 25;
 
-        header.setBounds(0,0,this.getWidth(),this.getHeight()/4);
+        header.setBounds(0, 0, this.getWidth(), this.getHeight() / 4);
         header.setBackground(Color.decode("#c66d6d"));
         header.setLayout(null);
         panel.add(header);
 
-        centerText.setText("Lorem Ipsum");
-        centerText.setBounds(0, header.getHeight()-40, header.getWidth(), 30);
-        centerText.setFont(new Font("LINUX", Font.PLAIN, 20));
-        centerText.setHorizontalAlignment(SwingConstants.CENTER);
-        centerText.setForeground(Color.decode("#e3e3e3"));
-
-        day.setBounds(padding,padding,200,20);
-        header.add(day);
-        header.add(centerText);
-
-        body.setBounds(panel.getX(),125,this.getWidth(),this.getHeight()/2);
+        body.setBounds(panel.getX(), 125, this.getWidth(), this.getHeight() / 2);
         body.setBackground(Color.decode("#cecece"));
         body.setLayout(null);
         panel.add(body);
 
-        out1.setText("Out1 = n");
-        out1.setBounds(5,padding,this.getWidth(),padding);
-        out1.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out1);
+        footer.setBounds(panel.getX(), 375, this.getWidth(), 125);
+        footer.setBackground(Color.decode("#2f3030"));
+        footer.setLayout(null);
+        panel.add(footer);
 
-        out2.setText("Out2 = n");
-        out2.setBounds(5,padding*2,this.getWidth(),padding);
-        out2.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out2);
-        
-        out3.setText("Out3 = n");
-        out3.setBounds(5,padding*3,this.getWidth(),padding);
-        out3.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out3);
-
-        out4.setText("Out4 = n");
-        out4.setBounds(5,padding*4,this.getWidth(),padding);
-        out4.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out4);
-
-        out5.setText("Out5 = n");
-        out5.setBounds(5,padding*5,this.getWidth(),padding);
-        out5.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out5);
- 
-        anotaciones.setBounds(5,padding*7,this.getWidth()-25,70);
-        anotaciones.setLineWrap(true);
-        anotaciones.setWrapStyleWord(true);
-        anotaciones.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(anotaciones);
-
-
-        //cabezal
-/*         panel.add(header);
-        header.setBounds(0,0,this.getWidth(),this.getHeight()/4);
-        header.setBackground(Color.decode("#c66d6d"));
-
-        //texto dentro del cabezal
-        centerText.setText("Lorem Ipsum dolor");
-        centerText.setBounds(0, header.getHeight()-40, header.getWidth(), 30);
-        centerText.setHorizontalAlignment(SwingConstants.CENTER);
-        centerText.setVerticalAlignment(SwingConstants.BOTTOM);
+        // HEADER
+        centerText.setText("Presupuesto Calculado");
+        centerText.setBounds(0, header.getHeight() - 40, header.getWidth(), 30);
         centerText.setFont(new Font("LINUX", Font.PLAIN, 20));
+        centerText.setHorizontalAlignment(SwingConstants.CENTER);
         centerText.setForeground(Color.decode("#e3e3e3"));
         header.add(centerText);
 
+        // RECICLAME
+        reciclame.setText("No me tires en cualquier lado, ¡reciclame!");
+        reciclame.setBounds(-20, 0, this.getWidth(), 20);
+        reciclame.setHorizontalAlignment(SwingConstants.RIGHT);
+        header.add(reciclame);
 
-        //Cuerpo
-        panel.add(body);
-        body.setBounds(panel.getX(),125,this.getWidth(),this.getHeight()/2);
-        body.setBackground(Color.decode("#cecece"));
-
-
+        // BODY
         out1.setText("Out1 = n");
-        out1.setBounds(0,padding,100,padding);
+        out1.setBounds(5, padding, this.getWidth(), padding);
         out1.setFont(new Font("LINUX", Font.PLAIN, 16));
         body.add(out1);
 
-
         out2.setText("Out2 = n");
-        out2.setBounds(0,padding*2,100,padding);
+        out2.setBounds(5, padding * 2, this.getWidth(), padding);
         out2.setFont(new Font("LINUX", Font.PLAIN, 16));
         body.add(out2);
 
         out3.setText("Out3 = n");
-        out3.setBounds(0,padding*3,100,20);
+        out3.setBounds(5, padding * 3, this.getWidth(), padding);
         out3.setFont(new Font("LINUX", Font.PLAIN, 16));
         body.add(out3);
 
-
         out4.setText("Out4 = n");
-        out4.setBounds(0,padding*4,100,padding);
+        out4.setBounds(5, padding * 4, this.getWidth(), padding);
         out4.setFont(new Font("LINUX", Font.PLAIN, 16));
         body.add(out4);
 
-
         out5.setText("Out5 = n");
-        out5.setBounds(0,padding*5,100,padding);
+        out5.setBounds(5, padding * 5, this.getWidth(), padding);
         out5.setFont(new Font("LINUX", Font.PLAIN, 16));
-        body.add(out5); */
+        body.add(out5);
 
-        
-        
+        anotaciones.setBounds(5, padding * 7, this.getWidth() - 25, 70);
+        anotaciones.setLineWrap(true);
+        anotaciones.setWrapStyleWord(true);
+        anotaciones.setFont(new Font("LINUX", Font.PLAIN, 16));
+        anotaciones.setEditable(false);
+        anotaciones.setBackground(Color.decode("#cecece"));
+        body.add(anotaciones);
+
+        // FOOTER
+        // Fecha
+        day.setBounds(5, padding * 2, 100, 20);
+        day.setForeground(Color.decode("#e3e3e3"));
+        footer.add(day);
+        // Nombre
+        nameInFooter.setText("Rotapol decoraciones");
+        nameInFooter.setBounds(0, footer.getHeight() / 2, this.getWidth(), 20);
+        nameInFooter.setHorizontalAlignment(SwingConstants.CENTER);
+        nameInFooter.setVerticalAlignment(SwingConstants.CENTER);
+        nameInFooter.setForeground(Color.decode("#e3e3e3"));
+        footer.add(nameInFooter);
+        //Hora
+        hour.setBounds(this.getWidth() - (padding * 3), padding * 2, 100, 20);
+        hour.setForeground(Color.decode("#e3e3e3"));
+        footer.add(hour);
+        //Direccion
+        direccion.setText("Av.Alvarez Jonte");
+        direccion.setBounds(0, footer.getHeight() / 4, this.getWidth(), 20);
+        direccion.setHorizontalAlignment(SwingConstants.CENTER);
+        direccion.setVerticalAlignment(SwingConstants.CENTER);
+        direccion.setForeground(Color.decode("#e3e3e3"));
+        footer.add(direccion);
+
+
     }
 
-/*     public void images(){
-        try {
-            BufferedImage img = ImageIO.read(new File(IMG_PATH));
-            ImageIcon icon = new ImageIcon(img);
-            JLabel label = new JLabel(icon);
-            JOptionPane.showMessageDialog(null, label);
-         } catch (IOException e) {
-            e.printStackTrace();
-         }
-    } */
+    /*
+     * public void images(){
+     * try {
+     * BufferedImage img = ImageIO.read(new File(IMG_PATH));
+     * ImageIcon icon = new ImageIcon(img);
+     * JLabel label = new JLabel(icon);
+     * JOptionPane.showMessageDialog(null, label);
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * }
+     * }
+     */
 
 }

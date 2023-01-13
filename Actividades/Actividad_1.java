@@ -79,7 +79,9 @@ public class Actividad_1 extends SuperActividades {
             80, 400, 25, jp1);
 
     /* Imprimir */
-    Button btnImprimir = new Button("Imprimir", 300, 400, 100, 40, jp1);
+    Button btnImprimir = new Button("Imprimir", 380, 400, 100, 40, jp1);
+    //Check Error
+    public boolean checkError;
 
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
@@ -88,12 +90,15 @@ public class Actividad_1 extends SuperActividades {
         //this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // this.setFocusable(true);
 
+
         ui();
 
         // addEventKey();
         addEventRadio();
         ponerPanel(jp1);
         // checkRadios();
+
+
         clickImprimir();
 
     }
@@ -147,9 +152,10 @@ public class Actividad_1 extends SuperActividades {
 
             System.out.println("Error, ingrese datos en todos los campos");
             errorDeNoLlenado(true);
-
+            checkError = true;
         } else {
             LberrorDeNoLlenado.setVisible(false);
+            checkError = false;
 
         }
     }
@@ -259,6 +265,7 @@ public class Actividad_1 extends SuperActividades {
         outprecioTotalTela.setText("Precio total de la tela = $" + formatNumber(precioTotalTela));// Convierte a string
         outprecioConfeccion.setText("Precio de la confeccion = $" + formatNumber(precioConfeccion));
         outTotal.setText("Precio Total = $" + formatNumber(Total));// Convierte a string
+
     }
 
     public void addEventRadio() {
@@ -290,10 +297,10 @@ public class Actividad_1 extends SuperActividades {
                 Area imprimir = new Area();
                 System.out.println("Printing..."); 
                 imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
-                imprimir.out2.setText("Modelo Elegido:" + String.valueOf(modeloElegido));
+                imprimir.out2.setText("Modelo Elegido: " + String.valueOf(modeloElegido));
                 imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
-                imprimir.out4.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
-                imprimir.out5.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
+                imprimir.out4.setText("Precio de la Confeccion = $" + formatNumber(precioConfeccion));
+                imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
                  try {
                     
