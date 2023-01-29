@@ -14,6 +14,7 @@ public abstract class SuperActividades extends Window{
 
     public SuperActividades(){
         this.setTitle("Super");
+
         //superWindow.ponerPanel(panel);
         //superWindow.setVisible(true);
     }

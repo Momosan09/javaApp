@@ -143,7 +143,7 @@ public class Area extends JTextArea {
         hour.setForeground(Color.decode("#e3e3e3"));
         footer.add(hour);
         //Direccion
-        direccion.setText("Av.Alvarez Jonte");
+        direccion.setText("Av.Alvarez Jonte 4837");
         direccion.setBounds(0, footer.getHeight() / 4, this.getWidth(), 20);
         direccion.setHorizontalAlignment(SwingConstants.CENTER);
         direccion.setVerticalAlignment(SwingConstants.CENTER);

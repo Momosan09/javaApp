@@ -9,7 +9,7 @@ public class Window extends JFrame{
   public Window(){
     //setExtendedState(JFrame.MAXIMIZED_BOTH); //pantalla completa
 
-    setSize(500,500);
+    setSize(700,700);
     setLocationRelativeTo(null);
     //setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Untitled");

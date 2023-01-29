@@ -1,10 +1,19 @@
 import Actividades.*;
-
+import java.io.File;
 
 public class Main {
 
   public static void main(String[] args) {
 
+    //Cada vez que compila borra el archivo Main.class para no tener problemas en la siguiente compilacion (Cambio de sistema operativo)
+    File file = new File("Main.class");
+    if(file.exists()){
+      file.delete();
+      System.out.println("Main Class Deleted!");
+    }else{
+      System.out.println("Couldn't find Class!");
+
+    }
     /*
      * window.setVisible(true);
      * 
@@ -15,30 +24,9 @@ public class Main {
 
     Manager mn = new Manager();
     {
-      // Actividad_1 act = new Actividad_1();
+       Actividad_1 act = new Actividad_1();
 
     }
   }
 
 }
-
-/*
- * se necesitan x inputs
- * -Modelo elegido el cual contiene un nombre y un valor
- * numerico(multiplicadorDelaTelaElegida)
- * -cantidad de paños (int)
- * -precio del paño (float)
- * -precio de la tela (float)(mas adelante ver de conectar a sql?)
- * -Medida de la tela
- * 
- * con esos inputs se hacen los siguientes calculos:
- * medidaTotalDeLaTela = (medida * multiplicadorDelaTelaElegida)
- * precioTotalDeLaTela = medidaTotalDeLaTela * precioTela
- * cantidadDePaños = medidaTotalDeLaTela / 1.5 (redondear para arriba la
- * cantidad de paños)
- * precioConfeccion = pañosRedondeados(cantidadDePaños) * precioDelPaño
- * 
- * Total = precioTotalDeLaTela + precioConfeccion
- * 
- * ver lo de los botones y eventos en el directorio "cartas"
- */

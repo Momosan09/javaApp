@@ -25,27 +25,29 @@ import Recursos.TextField;
 
 public class Actividad_1 extends SuperActividades implements KeyListener {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
-    // JPanel radiosPanel = new JPanel();
+    JPanel jpDatosPers = new JPanel();
+    JPanel radiosPanel = new JPanel();
 
     public double medidaTela, medidaTotalTela, precioTela, precioTotalTela, precioPano, precioConfeccion, Total,
             cantidadPanos, multiplicadorModelo;
     public String medidaTelaOut, modeloElegido;
+    public int paddingM = 5;
 
     // Button btn1 = new Button("Boton 1", 200, 0, 100, 20);
 
     /* INPUT */
 
     /* Medida Tela */
-    JLabel lbMedidaTela = new Label("Ingrese medida de la tela", "Medida de la tela en metros", 0, 0, 250, 25, jp1);
-    TextField txfMedidaTela = new TextField(250, 0, 150, 25, 5, jp1, "");
+    JLabel lbMedidaTela = new Label("Ancho total a cubrir (Mts)", "Ancho Total terminado en Metros", paddingM, paddingM, 250, 25, jp1);
+    TextField txfMedidaTela = new TextField(250, lbMedidaTela.getY(), 150, 25, 5, jp1, "");
 
     /* Precio un solo pano */
-    JLabel lbPrecioPanos = new Label("Precio de un paño", "Precio por unidad de paño", 0, 35, 250, 25, jp1);
-    TextField txfPrecioUnPano = new TextField(250, 35, 150, 25, 5, jp1, "");
+    JLabel lbPrecioPanos = new Label("Precio de confeccion por paño", "Precio por unidad de paño", paddingM, 35 + paddingM, 300, 25, jp1);
+    TextField txfPrecioUnPano = new TextField(300, lbPrecioPanos.getY(), 150, 25, 5, jp1, "");
 
     /* Precio Tela */
-    JLabel lbPrecioTela = new Label("Precio de la tela", "Precio de la tela", 0, 70, 250, 25, jp1);
-    TextField txfPrecioTela = new TextField(250, 70, 150, 25, 5, jp1, "");
+    JLabel lbPrecioTela = new Label("Precio de la tela", "Precio de la tela", paddingM, 70 + paddingM, 250, 25, jp1);
+    TextField txfPrecioTela = new TextField(250, lbPrecioTela.getY(), 150, 25, 5, jp1, "");
 
     /* Modelo elegido */
     ButtonGroup bg = new ButtonGroup();
@@ -62,25 +64,48 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
     JRadioButton r8 = new Radio("Modelo 8", 220, 140, 100, 30, jp1, 2);
     JRadioButton r9 = new Radio("Modelo 9", 220, 170, 100, 30, jp1, 2);
 
+    /* Datos personales */
+    /* Nombre */
+    JLabel nombreLbl = new Label("Nombre del cliente: ", "Ingrese el nombre del Cliente", paddingM, paddingM, 250, 20, jpDatosPers);
+
+    TextField nombreTxtField = new TextField(nombreLbl.getX() + nombreLbl.getWidth(), nombreLbl.getY(), 200, 20, 5, jpDatosPers, "");
+
+    /* Apellido */
+    JLabel apellidoLbl = new Label("Apellido del cliente: ", "Ingrese el Apellido del Cliente", paddingM, nombreLbl.getHeight() + nombreLbl.getY() + paddingM, 250, 20, jpDatosPers);
+
+    TextField apellidoTxtField = new TextField(apellidoLbl.getX() + apellidoLbl.getWidth(), apellidoLbl.getY(), 200, 20, 5, jpDatosPers, "");
+
+    /* Telefono */
+
+    JLabel telefonoLbl = new Label("Telefono del cliente: ", "Ingrese el Telefono del Cliente", paddingM, nombreLbl.getHeight()+ apellidoLbl.getY() + paddingM, 250, 20, jpDatosPers);
+
+    TextField telefonoTxtField = new TextField(telefonoLbl.getX() + telefonoLbl.getWidth(), telefonoLbl.getY(), 200, 20, 5, jpDatosPers, "");
+
+    /* Correo */
+
+    JLabel correoLbl = new Label("Correo del cliente: ", "Ingrese el Correo del Cliente", paddingM, nombreLbl.getHeight() + telefonoLbl.getY() + paddingM, 250, 20, jpDatosPers);
+
+    TextField correoTxtField = new TextField(correoLbl.getX() + correoLbl.getWidth(), correoLbl.getY(), 200, 20, 5, jpDatosPers, "");
+
     /* Texto adicional */
     JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20, 200, 250, 20, jp1);
     JTextArea txtA = new JTextArea();
 
     /* OUTPUT */
-    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 320, 400,
+    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 500, 400,
             25, jp1);
-    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 350, 400, 25,
+    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 530, 400, 25,
             jp1);
-    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 380, 400, 25,
+    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 560, 400, 25,
             jp1);
-    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 410, 400, 25, jp1);
+    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 590, 400, 25, jp1);
 
     /* Errores */
     JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100,
             90, 400, 25, jp1);
 
     /* Imprimir */
-    Button btnImprimir = new Button("Imprimir", 380, 400, 100, 40, jp1);
+    Button btnImprimir = new Button("Imprimir", 550, 600, 100, 40, jp1);
     // Check Error
     public boolean checkError;
 
@@ -96,6 +121,8 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
 
         // addEventKey();
         addEventRadio();
+
+        ponerPanel(jpDatosPers);
         ponerPanel(jp1);
         // checkRadios();
 
@@ -108,7 +135,12 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
         ponerEtiqueta();
         ponerRadio();
         ponerTextArea();
+        jpDatosPersStyle();
 
+    }
+    private void jpDatosPersStyle(){
+        jpDatosPers.setBounds(0,330,this.getWidth(),105);
+        jpDatosPers.setBackground(Color.decode("#c66d6d"));
     }
 
     private void ponerTextArea() {

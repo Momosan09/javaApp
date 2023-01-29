@@ -1,0 +1,8 @@
+primer input cambiarlo por "Ancho total a cubrir en Mts" x
+segundo "precio de confeccion por paño" x
+alvarez jonte 4837 x
+
+pedir nombre y apellido
+telefono
+
+index para los Presupuesto

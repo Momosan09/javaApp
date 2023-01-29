@@ -38,14 +38,19 @@ public class Manager extends SuperActividades{
         setVisible(true);
         setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(true);
+
+        //setBounds(0,0,1000,700);
+        
 
         jp.setBounds(0,0,200,200);
         jp.setBackground(Color.decode("#cecece"));
 
         gui();
-        addActividad("Presupuesto 1", "Lorem ipsum sit amet 1 ...",0);
-        addActividad("Presupuesto 2", "Lorem ipsum sit amet 2 ...",200);
-        addActividad("Presupuesto 3", "Lorem ipsum sit amet 3 ...",400);
+        addActividad("Cortinados", "Para calcular cortinados",0);
+        addActividad("Roller", "Para calcular roller",200);
+
+        //addActividad("Presupuesto 3", "Lorem ipsum sit amet 3 ...",400);
         ponerPanel(jp);
 
         //jp.setBorder(loweredetched);
@@ -118,14 +123,14 @@ public class Manager extends SuperActividades{
         date = String.valueOf(myClock); */
 
         colIzq.setVisible(true);
-        colIzq.setBounds(0,0,this.getWidth()/10, this.getHeight());
-        colIzq.setBackground(Color.decode("#d89e9e"));
+        colIzq.setBounds(0,0,this.getWidth()/8, this.getHeight());
+        colIzq.setBackground(Color.decode("#ef233e"));
 
         JPanel tasks = new JPanel();
 
         tasks.setVisible(true);
         tasks.setBounds(0,colIzq.getHeight()/3,colIzq.getWidth(),colIzq.getHeight()/2);
-        tasks.setBackground(Color.decode("#2da3c6"));
+        tasks.setBackground(Color.decode("#d89e9e"));
         colIzq.add(tasks);
 
         JPanel nombreAbajo = new JPanel();
