@@ -123,16 +123,14 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
         // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // this.setFocusable(true);
 
+        ponerPanel(jpDatosPers);
+        ponerPanel(jp1); 
         ui();
         addEventKey();
         /* cc.agregarPresupuesto("elamigos", "Games", "11111111", "elamigos@amigomail.com"); */
-        // addEventKey();
         addEventRadio();
 
-        ponerPanel(jpDatosPers);
-        ponerPanel(jp1);
         // checkRadios();
-
         clickImprimir();
 
     }
@@ -360,8 +358,9 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
                 imprimir.out4.setText("Precio de la Confeccion = $" + formatNumber(precioConfeccion));
                 imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
+                cc.agregarPresupuesto(nombreTxtField.getText(), apellidoTxtField.getText(), telefonoTxtField.getText(), correoTxtField.getText());
                 try {
-
+                    System.out.print("Presupuesto Añadido a la base de datos!");
                     /*
                      * imprimir.fill(outMedidaTotalTela);
                      * imprimir.fill(outprecioConfeccion);
