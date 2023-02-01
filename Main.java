@@ -1,11 +1,18 @@
 import Actividades.*;
 import java.io.File;
+import java.sql.Connection;
 
 public class Main {
 
   public static void main(String[] args) {
 
     //Cada vez que compila borra el archivo Main.class para no tener problemas en la siguiente compilacion (Cambio de sistema operativo)
+    //Data Base
+    Connect cc = new Connect();
+    Connection cn = cc.conectar(); 
+    
+
+
     File file = new File("Main.class");
     if(file.exists()){
       file.delete();

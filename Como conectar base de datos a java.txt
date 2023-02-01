@@ -1,0 +1,55 @@
+Para conectar una base de datos hay que hacer una clase especial para crear la conexion
+Este proyecto usa "Sqlite" y el ejemplo es para Este.
+
+##Primer Paso: Crear Clase para la conexion
+
+/*
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class (ReemplazarPorElNombreDeLaClase) {
+
+    Connection conecta = null;
+
+    public Connection conectar() {
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conecta = DriverManager.getConnection("jdbc:sqlite:Presupuestos.db");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return conecta;//
+    }
+
+}
+
+
+*/
+
+##Segundo Paso:
+
+/*
+    Connect cc = new Connect();
+    Connection cn = cc.conectar(); 
+*/
+
+Crear un objeto de la clase(en el la clase Main preferentemente)
+
+##Tercer Paso: 
+Descargar la libreria (en este caso) https://github.com/xerial/sqlite-jdbc#download
+
+##Cuarto Paso:
+Agregar el archivo descargado al directorio del proyecto y poner lo siguiente en la consola
+
+/*
+> javac Sample.java
+> java -classpath ".;sqlite-jdbc-(VERSION).jar" Sample   # in Windows
+or
+> java -classpath ".:sqlite-jdbc-(VERSION).jar" Sample   # in macOS or Linux
+*/
+
+
+##Video de ayuda: https://www.youtube.com/watch?v=YkaIyDj0wKo
