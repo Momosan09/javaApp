@@ -27,7 +27,7 @@ public class Main {
 
     Manager mn = new Manager();
     {
-      // Actividad_1 act = new Actividad_1();
+       Actividad_1 act = new Actividad_1();
 
     }
   }

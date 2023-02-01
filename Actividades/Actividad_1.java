@@ -91,24 +91,24 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
     TextField correoTxtField = new TextField(correoLbl.getX() + correoLbl.getWidth(), correoLbl.getY(), 200, 20, 5, jpDatosPers, "");
 
     /* Texto adicional */
-    JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20, 200, 250, 20, jp1);
+    JLabel txtALabel = new Label("Anotaciones especiales", "Campo opcional, no es requerido", 20, 320, 250, 20, jp1);
     JTextArea txtA = new JTextArea();
 
     /* OUTPUT */
-    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 500, 400,
+    JLabel outMedidaTotalTela = new Label("Medida total de la tela = ", "medida total de la tela en cm", 0, 200, 400,
             25, jp1);
-    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 530, 400, 25,
+    JLabel outprecioTotalTela = new Label("Precio total de la tela = ", "precio total de la tela", 0, 230, 400, 25,
             jp1);
-    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 560, 400, 25,
+    JLabel outprecioConfeccion = new Label("Precio de la confeccion = ", "precio de la confeccion", 0, 260, 400, 25,
             jp1);
-    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 590, 400, 25, jp1);
+    JLabel outTotal = new Label("Precio Total = ", "Total a pagar", 0, 290, 400, 25, jp1);
 
     /* Errores */
     JLabel LberrorDeNoLlenado = new Label("* Porfavor, completar todos los campos", "Algunos campos estan vacios", 100,
             90, 400, 25, jp1);
 
     /* Imprimir */
-    Button btnImprimir = new Button("Imprimir", 550, 600, 100, 40, jp1);
+    Button btnImprimir = new Button("Imprimir", this.getWidth()-200, 0, 100, 40, jpDatosPers);
     // Check Error
     public boolean checkError;
 
@@ -144,14 +144,15 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
 
     }
     private void jpDatosPersStyle(){
-        jpDatosPers.setBounds(0,330,this.getWidth(),105);
+
+        jpDatosPers.setBounds(0,460,this.getWidth(),105);
         jpDatosPers.setBackground(Color.decode("#c66d6d"));
     }
 
     private void ponerTextArea() {
         int padding = 20;
         txtALabel.setFont(new Font("LINUX", Font.CENTER_BASELINE, 16));
-        txtA.setBounds(padding, 220, this.getWidth() - padding * 3, 100);
+        txtA.setBounds(padding, 340, this.getWidth() - padding * 3, 100);
         txtA.setLineWrap(true);
         txtA.setWrapStyleWord(true);
         txtA.setFont(new Font("LINUX", Font.PLAIN, 16));
@@ -358,8 +359,8 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
                 imprimir.out4.setText("Precio de la Confeccion = $" + formatNumber(precioConfeccion));
                 imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
-                cc.agregarPresupuesto(nombreTxtField.getText(), apellidoTxtField.getText(), telefonoTxtField.getText(), correoTxtField.getText());
                 try {
+                    cc.agregarPresupuesto(nombreTxtField.getText(), apellidoTxtField.getText(), telefonoTxtField.getText(), correoTxtField.getText());
                     System.out.print("Presupuesto Añadido a la base de datos!");
                     /*
                      * imprimir.fill(outMedidaTotalTela);
