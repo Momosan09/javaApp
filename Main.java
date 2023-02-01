@@ -1,4 +1,6 @@
 import Actividades.*;
+import Databse.Connect;
+
 import java.io.File;
 import java.sql.Connection;
 
@@ -7,12 +9,6 @@ public class Main {
   public static void main(String[] args) {
 
     //Cada vez que compila borra el archivo Main.class para no tener problemas en la siguiente compilacion (Cambio de sistema operativo)
-    //Data Base
-    Connect cc = new Connect();
-    Connection cn = cc.conectar(); 
-    
-
-
     File file = new File("Main.class");
     if(file.exists()){
       file.delete();
@@ -31,7 +27,7 @@ public class Main {
 
     Manager mn = new Manager();
     {
-       Actividad_1 act = new Actividad_1();
+      // Actividad_1 act = new Actividad_1();
 
     }
   }

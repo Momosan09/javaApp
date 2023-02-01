@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;//para los eventos
 import java.awt.event.KeyEvent;//eventos de teclado
 import java.awt.event.KeyListener;//eventos de teclado
 import java.awt.print.PrinterException;
+import java.sql.Connection;
 import java.util.*;
 
 import javax.swing.JLabel;
@@ -22,6 +23,8 @@ import Recursos.Area;
 import Recursos.Button;
 import Recursos.Label;
 import Recursos.TextField;
+
+import Databse.*;
 
 public class Actividad_1 extends SuperActividades implements KeyListener {
     JPanel jp1 = new JPanel();// jp1 es para los inputs
@@ -109,6 +112,10 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
     // Check Error
     public boolean checkError;
 
+    //Data Base connect
+    Connect cc = new Connect();
+    Connection cn = cc.conectar(); 
+
     public Actividad_1() {
         this.setTitle("Presupuesto 1");
         this.setVisible(true);
@@ -118,7 +125,7 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
 
         ui();
         addEventKey();
-
+        /* cc.agregarPresupuesto("elamigos", "Games", "11111111", "elamigos@amigomail.com"); */
         // addEventKey();
         addEventRadio();
 
