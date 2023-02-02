@@ -18,13 +18,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
+import Database.*;
 import Recursos.Radio;
 import Recursos.Area;
 import Recursos.Button;
 import Recursos.Label;
 import Recursos.TextField;
-
-import Databse.*;
 
 public class Actividad_1 extends SuperActividades implements KeyListener {
     JPanel jp1 = new JPanel();// jp1 es para los inputs

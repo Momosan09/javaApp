@@ -1,4 +1,4 @@
-package Databse;
+package Database;
 
 /* si tiene "//" es porque es el codigo basico para que se ejecute, para no confundirme cuando crezca el codigo */
 import java.sql.Connection;
@@ -6,12 +6,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.sql.RowId;
 import java.sql.SQLException;
 
 public class Connect {
 
     Connection conecta = null;//
+    int index = 0;
+
 
     public Connection conectar() {//
 
@@ -23,18 +24,24 @@ public class Connect {
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
             //Crear Tabla
-            statement.executeUpdate("drop table if exists person");
-            statement.executeUpdate("create table person (id integer PRIMARY KEY, name string, apellido string, telefono string, correo string)");
+
+            statement.executeUpdate("create table if not exists presupuesto (id integer PRIMARY KEY, name string, apellido string, telefono string, correo string)");
+            //getIndex();
+            pDelete(2);
 
         } catch (Exception e) {//
+            System.err.println("Algo salio mal con la vinculacion de la base de datos o la creacion de las tablas!");
+            System.err.println("Origin: Database/Connect.java/:16");    
             System.err.println(e.getMessage());//
+            System.err.println("--- Error ---");
+
         }
 
         return conecta;//
     }
 
     public void agregarPresupuesto(String name, String apellido, String telefono, String correo){
-        try (PreparedStatement Pstatement = conecta.prepareStatement("insert into person values(?,?,?,?,?)")) {
+        try (PreparedStatement Pstatement = conecta.prepareStatement("insert into presupuesto values(?,?,?,?,?)")) {
 
             Pstatement.setInt(1, getIndex() + 1);
             Pstatement.setString(2, name);
@@ -44,17 +51,19 @@ public class Connect {
             Pstatement.executeUpdate();
             
         } catch (SQLException e) {
+            System.err.println("Algo salio mal con el pedido de creacion de otra fila!");
+            System.err.println("Origin: Database/Connect.java/:36");    
             e.printStackTrace();
             System.err.println(e.getMessage());//
+            System.err.println("--- Error ---");
 
         }
     }
     private int getIndex(){
         try{
-            int index = 0;
             Statement statement = conecta.createStatement();
 
-            ResultSet rs = statement.executeQuery("select COUNT(id) from person");
+            ResultSet rs = statement.executeQuery("select COUNT(id) from presupuesto");
 
             while(rs.next()){
                 index = Integer.parseInt(rs.getString(1));
@@ -64,10 +73,30 @@ public class Connect {
 
             
         } catch (SQLException e) {
+            System.err.println("Algo salio mal con el pedido de los indices!");
+            System.err.println("Origin: Database/Connect.java/:54");
             e.printStackTrace(); 
+            System.err.println("--- Error ---");
+
             return 0;
         }
 
+    }
+
+    public void pDelete(int id){
+        try(PreparedStatement Pstatement = conecta.prepareStatement("DELETE FROM presupuesto where id = ?")){
+            //Pstatement.setString(2, "name");
+            Pstatement.setInt(1, id);
+
+            Pstatement.executeUpdate();
+
+        }catch(SQLException e){
+            System.err.println("Algo salio mal al intentar borrar la fila!");
+            System.err.println("Origin: Database/Connect.java/:83!");
+            e.printStackTrace();
+            System.err.println("--- Error ---");
+
+        }
     }
 
 }
