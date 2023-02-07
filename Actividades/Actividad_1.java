@@ -22,6 +22,7 @@ import Database.*;
 import Recursos.Radio;
 import Recursos.Area;
 import Recursos.Button;
+import Recursos.ConsoleColors;
 import Recursos.Label;
 import Recursos.TextField;
 
@@ -188,7 +189,7 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
         if (txfMedidaTela.getText().isEmpty() || txfPrecioTela.getText().isEmpty()
                 || txfPrecioUnPano.getText().isEmpty()) {
 
-            System.out.println("Error, ingrese datos en todos los campos");
+            System.out.println(ConsoleColors.RED + "Error, ingrese datos en todos los campos" + ConsoleColors.RESET);
             errorDeNoLlenado(true);
             checkError = true;
         } else {
@@ -351,7 +352,7 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Area imprimir = new Area();
-                System.out.println("Printing...");
+                System.out.println(ConsoleColors.BLUE + "Printing..." + ConsoleColors.RESET);    
                 imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
                 imprimir.out2.setText("Modelo Elegido: " + String.valueOf(modeloElegido));
                 imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
@@ -359,8 +360,20 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
                 imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
                 try {
-                    cc.agregarPresupuesto(nombreTxtField.getText(), apellidoTxtField.getText(), telefonoTxtField.getText(), correoTxtField.getText());
-                    System.out.print("Presupuesto Añadido a la base de datos!");
+                    cc.agregarPresupuesto(
+                    nombreTxtField.getText(), 
+                    apellidoTxtField.getText(), 
+                    telefonoTxtField.getText(), 
+                    correoTxtField.getText(),
+                    txtA.getText(),
+                    imprimir.out1.getText(),
+                    imprimir.out2.getText(),
+                    imprimir.out3.getText(),
+                    imprimir.out4.getText(),
+                    imprimir.out5.getText(),
+                    false
+                    );
+                    System.out.print(ConsoleColors.GREEN_BACKGROUND + "Presupuesto Añadido a la base de datos!" + ConsoleColors.RESET);
                     /*
                      * imprimir.fill(outMedidaTotalTela);
                      * imprimir.fill(outprecioConfeccion);
@@ -369,7 +382,8 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
                      */
 
                     imprimir.print();
-                } catch (PrinterException e) {
+                }
+                catch (PrinterException e) {
                     e.printStackTrace();
                 }
 

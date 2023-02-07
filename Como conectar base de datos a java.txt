@@ -45,6 +45,9 @@ Descargar la libreria (en este caso) https://github.com/xerial/sqlite-jdbc#downl
 Agregar el archivo descargado al directorio del proyecto y poner lo siguiente en la consola
 
 /*
+java -classpath ".;sqlite-jdbc-3.40.0.0.jar" Main
+*/
+/*
 > javac Sample.java
 > java -classpath ".;sqlite-jdbc-(VERSION).jar" Sample   # in Windows
 or
