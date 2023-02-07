@@ -7,11 +7,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import Recursos.DateLabel;
+import Recursos.TextField;
 
 //import javafx.*; Ver despues
 //https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm
@@ -125,6 +127,20 @@ public class Manager extends SuperActividades{
         colIzq.setVisible(true);
         colIzq.setBounds(0,0,this.getWidth()/8, this.getHeight());
         colIzq.setBackground(Color.decode("#ef233e"));
+        
+        JLabel precioDelDIa = new JLabel();
+        precioDelDIa.setVisible(true);
+        precioDelDIa.setText("Precio del dia");
+        precioDelDIa.setBounds(0,100,this.getWidth(),20);
+        precioDelDIa.setFont(new Font("LINUX", Font.BOLD, 20));
+/*         precioDelDIa.setHorizontalAlignment(SwingConstants.CENTER);
+        precioDelDIa.setVerticalAlignment(SwingConstants.CENTER); */
+        colIzq.add(precioDelDIa);
+
+        JTextField precioDelDiaTxf = new JTextField();
+        precioDelDiaTxf.setBounds(10,120,150,20);
+        colIzq.add(precioDelDiaTxf);
+        
 
         JPanel tasks = new JPanel();
 
