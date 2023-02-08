@@ -69,7 +69,7 @@ public class Connect {
 
         }
     }
-    private int getIndex(){
+    public int getIndex(){
         try{
             Statement statement = conecta.createStatement();
 
@@ -93,6 +93,23 @@ public class Connect {
 
     }
 
+    public void select(){
+        try{
+            Statement statement = conecta.createStatement();
+
+            ResultSet rs = statement.executeQuery("select * from presupuesto");
+
+        }catch(SQLException e){
+            System.err.println("Algo salio mal al solicitar los datos!");
+            System.err.println("Origin: Database/Connect.java/ function select() ");
+            e.printStackTrace();
+            System.err.println("--- Error ---");
+
+        }
+
+        }
+    }
+
     /* public void pDelete(int id){
         try(PreparedStatement Pstatement = conecta.prepareStatement("DELETE FROM presupuesto where id = ?")){
             //Pstatement.setString(2, "name");
@@ -109,4 +126,4 @@ public class Connect {
         }
     } */
 
-}
+

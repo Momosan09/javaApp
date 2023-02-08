@@ -7,22 +7,28 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import Recursos.DateLabel;
-import Recursos.TextField;
+
+import Database.*;
 
 //import javafx.*; Ver despues
 //https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm
 import java.awt.event.ActionListener;//para los eventos
+import java.sql.Connection;
 import java.awt.event.ActionEvent;//para los eventos
 
 
 
 public class Manager extends SuperActividades{
+
+    Connect cc = new Connect();
+    Connection cn = cc.conectar();
 
     JPanel jp = new JPanel();
     JPanel colIzq = new JPanel();
@@ -67,7 +73,9 @@ public class Manager extends SuperActividades{
         JPanel actividad = new JPanel();
         JLabel lbTitle = new JLabel();
         JLabel lbText = new JLabel();
+        JLabel lbPresupuestosTotales = new JLabel();
         JButton btnAct = new JButton();
+        JButton btnDB = new JButton();
 
 
         int padding = 30;
@@ -83,19 +91,29 @@ public class Manager extends SuperActividades{
         lbText.setText(txt);
         lbText.setFont(new Font("LINUX", Font.PLAIN, 16));
         lbText.setForeground(Color.decode("#7e7e7e"));
-        
-
+                
         btnAct.setText("Ir");
         btnAct.setBounds(actividad.getHeight(),actividad.getHeight()-padding-padding/2,100,30);
 
+        btnDB.setText("Data Base");
+        btnDB.setBounds(320,btnAct.getY(),100,30);
+
+        
+        lbPresupuestosTotales.setBounds(500, btnAct.getY(), actividad.getWidth(), 20);
+        lbPresupuestosTotales.setText("Presupuestos Totales = " + cc.getIndex());
+        lbPresupuestosTotales.setHorizontalAlignment(SwingConstants.CENTER);
+        lbPresupuestosTotales.setVerticalAlignment(SwingConstants.CENTER);
 
         //Agregar al panel
         actividad.add(btnAct);
         actividad.add(lbTitle);
         actividad.add(lbText);
+        actividad.add(lbPresupuestosTotales);
         actividad.add(btnAct);
+        actividad.add(btnDB);
         ponerPanel(actividad);
         btnAct.addActionListener(click);
+        btnDB.addActionListener(clickDB);
 
         
     }
@@ -107,8 +125,18 @@ public class Manager extends SuperActividades{
     ActionListener click = new ActionListener(){
         @Override
           public void actionPerformed(ActionEvent ae){
-          System.out.println("Click");
+          //System.out.println("Click");
           changeStatus(true, act1);
+
+        }
+        
+    };
+    ActionListener clickDB = new ActionListener(){
+        @Override
+          public void actionPerformed(ActionEvent ae){
+          //System.out.println("Click");
+          
+
         }
         
     };
@@ -184,6 +212,10 @@ public class Manager extends SuperActividades{
         
         ponerPanel(colIzq);
         colIzq.add(dtlb);
+    }
+
+    public void dataBaseGui(){
+
     }
 
 }
