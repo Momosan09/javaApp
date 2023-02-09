@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -36,6 +37,7 @@ public class Manager extends SuperActividades{
     JPanel dbPanel = new JPanel();
     JPanel actividad = new JPanel();
     JButton botonRegreso = new JButton();
+/*     JTable jbt; */
 
 
 
@@ -215,7 +217,7 @@ public class Manager extends SuperActividades{
         
         dbPanel.add(botonRegreso);
         botonRegreso.addActionListener(clickRegreso);
-        botonRegreso.setBounds(0, 0,100, 200);
+        botonRegreso.setBounds(0, 0,150, 90);
         botonRegreso.setText("Regresar");
 
 
@@ -223,11 +225,25 @@ public class Manager extends SuperActividades{
         dbPanel.setBackground(Color.decode("#0000ff"));
         dbPanel.setBounds(colIzq.getWidth(),0,this.getWidth(),this.getHeight());
 
-        JTable tb = new JTable();
-       // DefaultTableModel tbModel = (DefaultTableModel).tb.getModel();
+        String nombreColumnas[] = {"Nombre", "Apellido"};
+        String datos[][] = cc.select();
+        
+        //JTable tb = new JTable(datos,nombreColumnas);
+        JTable tb = new JTable(datos, nombreColumnas);
+        JScrollPane scrPane = new JScrollPane(tb);
+        
+       
+/*      jbt = new JTable(datos,nombreColumnas);
+        jbt.setBounds(300,300,100,140);
 
+        dbPanel.add(jbt); */
         dbPanel.add(tb);
         tb.setVisible(true);
+        tb.setBounds(100,100,300,200);
+       // DefaultTableModel tbModel = (DefaultTableModel).tb.getModel();
+
+        //tb.setVisible(true);
+        //tb.addColumn("helo");
 
         //tbModel.addRow("hi");
         

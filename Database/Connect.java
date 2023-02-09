@@ -93,7 +93,7 @@ public class Connect {
 
     }
 
-    public String[] select(){
+    public String[][] select(){
         try{
             Statement statement = conecta.createStatement();
 
@@ -106,18 +106,31 @@ public class Connect {
                 String telefono = rs.getString(4);
                 String correo = rs.getString(5);
                 String anotaciones = rs.getString(6);
-                String cantidadTela = rs.getString(7);
-                String modeloTela = rs.getString(8);
-                String precioTela = rs.getString(9);
-                String precioConfeccion = rs.getString(10);
+                //String cantidadTela = rs.getString(7);
+                //String modeloTela = rs.getString(8);
+                //String precioTela = rs.getString(9);
+                //String precioConfeccion = rs.getString(10);
                 String total = rs.getString(11);
                 //Boolean checked = rs.getBoolean(12);
 
-                String tbData[] = {id, nombre, apellido, telefono, correo, anotaciones, cantidadTela, modeloTela, precioTela, precioConfeccion, total};
+                String tbData[][] = {
 
+                {id},
+                {nombre},
+                {apellido},
+                {telefono},
+                {correo},
+                {anotaciones},
+                /* cantidadTela,
+                modeloTela,
+                precioTela,
+                precioConfeccion,
+                */ 
+                {total}
+            };
+                System.out.println(ConsoleColors.BLUE + "Anda martin" + ConsoleColors.RESET);
                 return tbData;
-
-            }
+            };      
 
         }catch(SQLException e){
             System.err.println("Algo salio mal al solicitar los datos!");

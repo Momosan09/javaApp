@@ -1,0 +1,5 @@
+Si tenes que borrar todos los archivos con extension .class para que re compile y se muestren los cambios : https://www.reddit.com/r/javahelp/comments/atsunc/have_to_delete_class_files_before_every_compile/
+
+Solucion rapida(no es infalible):
+usar "javac" con los siguientes parametros
+ javac $(find -name '*.java')

@@ -1,8 +1,5 @@
 import Actividades.*;
-import Database.Connect;
 
-import java.io.File;
-import java.sql.Connection;
 
 public class Main {
 
