@@ -93,19 +93,41 @@ public class Connect {
 
     }
 
-    public void select(){
+    public String[] select(){
         try{
             Statement statement = conecta.createStatement();
 
             ResultSet rs = statement.executeQuery("select * from presupuesto");
+
+            while(rs.next()){
+                String id = String.valueOf(rs.getInt(1));
+                String nombre = rs.getString(2);
+                String apellido = rs.getString(3);
+                String telefono = rs.getString(4);
+                String correo = rs.getString(5);
+                String anotaciones = rs.getString(6);
+                String cantidadTela = rs.getString(7);
+                String modeloTela = rs.getString(8);
+                String precioTela = rs.getString(9);
+                String precioConfeccion = rs.getString(10);
+                String total = rs.getString(11);
+                //Boolean checked = rs.getBoolean(12);
+
+                String tbData[] = {id, nombre, apellido, telefono, correo, anotaciones, cantidadTela, modeloTela, precioTela, precioConfeccion, total};
+
+                return tbData;
+
+            }
 
         }catch(SQLException e){
             System.err.println("Algo salio mal al solicitar los datos!");
             System.err.println("Origin: Database/Connect.java/ function select() ");
             e.printStackTrace();
             System.err.println("--- Error ---");
+            return null;
 
         }
+        return null;
 
         }
     }

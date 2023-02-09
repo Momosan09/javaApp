@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
+
 import Recursos.DateLabel;
 
 import Database.*;
@@ -32,6 +33,12 @@ public class Manager extends SuperActividades{
 
     JPanel jp = new JPanel();
     JPanel colIzq = new JPanel();
+    JPanel dbPanel = new JPanel();
+    JPanel actividad = new JPanel();
+    JButton botonRegreso = new JButton();
+
+
+
 
     Actividad_1 act1 = new Actividad_1();
 
@@ -42,6 +49,10 @@ public class Manager extends SuperActividades{
         loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED); */
     
         act1.setVisible(false);
+        dbPanel.setVisible(false);
+        ponerPanel(dbPanel);
+
+
         
         setVisible(true);
         setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
@@ -55,8 +66,8 @@ public class Manager extends SuperActividades{
         jp.setBackground(Color.decode("#cecece"));
 
         gui();
-        addActividad("Cortinados", "Para calcular cortinados",0);
-        addActividad("Roller", "Para calcular roller",200);
+        actividades(true);
+        //addActividad("Roller", "Para calcular roller",200);
 
         //addActividad("Presupuesto 3", "Lorem ipsum sit amet 3 ...",400);
         ponerPanel(jp);
@@ -65,12 +76,15 @@ public class Manager extends SuperActividades{
         //jp.setForeground(Color.green);
 
     }
+    public void actividades(boolean b){
+        addActividad("Cortinados", "Para calcular cortinados",0);
+
+    }
 
     public void addActividad(String title, String txt, int y) {
         Border loweredetched;
         loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 
-        JPanel actividad = new JPanel();
         JLabel lbTitle = new JLabel();
         JLabel lbText = new JLabel();
         JLabel lbPresupuestosTotales = new JLabel();
@@ -122,24 +136,7 @@ public class Manager extends SuperActividades{
 
     }
 
-    ActionListener click = new ActionListener(){
-        @Override
-          public void actionPerformed(ActionEvent ae){
-          //System.out.println("Click");
-          changeStatus(true, act1);
 
-        }
-        
-    };
-    ActionListener clickDB = new ActionListener(){
-        @Override
-          public void actionPerformed(ActionEvent ae){
-          //System.out.println("Click");
-          
-
-        }
-        
-    };
 
     public void gui(){
         Border loweredetched, loweredbevel;
@@ -215,7 +212,56 @@ public class Manager extends SuperActividades{
     }
 
     public void dataBaseGui(){
+        
+        dbPanel.add(botonRegreso);
+        botonRegreso.addActionListener(clickRegreso);
+        botonRegreso.setBounds(0, 0,100, 200);
+        botonRegreso.setText("Regresar");
+
+
+        dbPanel.setVisible(true);
+        dbPanel.setBackground(Color.decode("#0000ff"));
+        dbPanel.setBounds(colIzq.getWidth(),0,this.getWidth(),this.getHeight());
+
+        JTable tb = new JTable();
+       // DefaultTableModel tbModel = (DefaultTableModel).tb.getModel();
+
+        dbPanel.add(tb);
+        tb.setVisible(true);
+
+        //tbModel.addRow("hi");
+        
 
     }
+
+    ActionListener click = new ActionListener(){
+        @Override
+          public void actionPerformed(ActionEvent ae){
+          //System.out.println("Click");
+          changeStatus(true, act1);
+
+        }
+        
+    };
+    ActionListener clickDB = new ActionListener(){
+        @Override
+          public void actionPerformed(ActionEvent ae){
+          //System.out.println("Click");
+          dataBaseGui();
+          actividad.setVisible(false);
+          
+
+        }
+        
+    };
+    ActionListener clickRegreso = new ActionListener(){
+        @Override
+          public void actionPerformed(ActionEvent ae){
+          actividad.setVisible(true);
+          dbPanel.setVisible(false);
+        }
+        
+    };
+
 
 }
