@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-
+import javax.swing.table.DefaultTableModel;
 
 import Recursos.DateLabel;
 
@@ -222,30 +222,9 @@ public class Manager extends SuperActividades{
 
 
         dbPanel.setVisible(true);
-        dbPanel.setBackground(Color.decode("#0000ff"));
+        //dbPanel.setBackground(Color.decode("#0000ff"));
         dbPanel.setBounds(colIzq.getWidth(),0,this.getWidth(),this.getHeight());
-
-        String nombreColumnas[] = {"Nombre", "Apellido"};
-        String datos[][] = cc.select();
-        
-        //JTable tb = new JTable(datos,nombreColumnas);
-        JTable tb = new JTable(datos, nombreColumnas);
-        JScrollPane scrPane = new JScrollPane(tb);
-        
-       
-/*      jbt = new JTable(datos,nombreColumnas);
-        jbt.setBounds(300,300,100,140);
-
-        dbPanel.add(jbt); */
-        dbPanel.add(tb);
-        tb.setVisible(true);
-        tb.setBounds(100,100,300,200);
-       // DefaultTableModel tbModel = (DefaultTableModel).tb.getModel();
-
-        //tb.setVisible(true);
-        //tb.addColumn("helo");
-
-        //tbModel.addRow("hi");
+        cc.select("Cortinados");
         
 
     }

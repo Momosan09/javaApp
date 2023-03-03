@@ -354,10 +354,10 @@ public class Actividad_1 extends SuperActividades implements KeyListener {
                 Area imprimir = new Area();
                 System.out.println(ConsoleColors.BLUE + "Printing..." + ConsoleColors.RESET);    
                 imprimir.out1.setText("Cantidad de tela = " + String.valueOf(medidaTotalTela) + "Mts");
-                imprimir.out2.setText("Modelo Elegido: " + String.valueOf(modeloElegido));
+                imprimir.out2.setText(String.valueOf(modeloElegido));
                 imprimir.out3.setText("Precio de la tela = $" + formatNumber(precioTotalTela));
                 imprimir.out4.setText("Precio de la Confeccion = $" + formatNumber(precioConfeccion));
-                imprimir.out5.setText("Precio Total = $" + formatNumber(Total));
+                imprimir.out5.setText(formatNumber(Total));
                 imprimir.anotaciones.setText(txtA.getText());
                 try {
                     cc.agregarPresupuesto(

@@ -6,6 +6,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import Recursos.ConsoleColors;
 
 import java.sql.ResultSet;
@@ -93,44 +99,58 @@ public class Connect {
 
     }
 
-    public String[][] select(){
+    public Object[][] select(String actividad){
+        Object tbData[][] = {};
         try{
             Statement statement = conecta.createStatement();
 
-            ResultSet rs = statement.executeQuery("select * from presupuesto");
+            ResultSet rs = statement.executeQuery("SELECT * FROM presupuesto");
+            try{
+                  
+                String columns[] = { "ID", "Name", "Apellido", "Telefono", "Correo", "Anotaciones", "Modelo Tela", "Total" };
 
-            while(rs.next()){
-                String id = String.valueOf(rs.getInt(1));
-                String nombre = rs.getString(2);
-                String apellido = rs.getString(3);
-                String telefono = rs.getString(4);
-                String correo = rs.getString(5);
-                String anotaciones = rs.getString(6);
-                //String cantidadTela = rs.getString(7);
-                //String modeloTela = rs.getString(8);
-                //String precioTela = rs.getString(9);
-                //String precioConfeccion = rs.getString(10);
-                String total = rs.getString(11);
-                //Boolean checked = rs.getBoolean(12);
+                String data[][] = new String[2147483646][8];  //Ver como arreglar esto, por ahora le puse el valor del tamaño de una variable del tipo "int"-1
+                int i = 0;
+                while (rs.next()) {
+                  int id = rs.getInt(1);
+                  String nom = rs.getString(2);
+                  String apellido = rs.getString(3);
+                  String telefono = rs.getString(4);
+                  String correo = rs.getString(5);
+                  String anotaciones = rs.getString(6);
+                  String modelo = rs.getString(8);
+                  String total = rs.getString(11);
+                  data[i][0] = id + "";
+                  data[i][1] = nom;
+                  data[i][2] = apellido;
+                  data[i][3] = telefono;
+                  data[i][4] = correo;
+                  data[i][5] = anotaciones;
+                  data[i][6] = modelo;
+                  data[i][7] = total;
+                  i++;
+                }
 
-                String tbData[][] = {
+                DefaultTableModel model = new DefaultTableModel(data, columns);
+                JTable table = new JTable(model);
+                table.setSize(700, 250);
+                table.setShowGrid(true);
+                table.setShowVerticalLines(true);
+                JScrollPane pane = new JScrollPane(table);
+                JFrame f = new JFrame(actividad + " Database");
+                JPanel panel = new JPanel();
+                panel.add(pane);
+                f.add(panel);
+                f.setSize(700, 250);
+                //f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                f.setVisible(true);
 
-                {id},
-                {nombre},
-                {apellido},
-                {telefono},
-                {correo},
-                {anotaciones},
-                /* cantidadTela,
-                modeloTela,
-                precioTela,
-                precioConfeccion,
-                */ 
-                {total}
-            };
-                System.out.println(ConsoleColors.BLUE + "Anda martin" + ConsoleColors.RESET);
-                return tbData;
-            };      
+            System.out.println(ConsoleColors.BLUE + "Anda martin" + ConsoleColors.RESET);
+            return tbData;
+        }catch (SQLException e) {
+            e.printStackTrace();
+
+        };
 
         }catch(SQLException e){
             System.err.println("Algo salio mal al solicitar los datos!");
